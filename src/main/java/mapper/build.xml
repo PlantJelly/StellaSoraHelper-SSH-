@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BuildDAO">
+	<!-- 빌드 등록(회원) -->
+	<insert id="insertBuildUser" parameterType="kr.ac.kopo.build.vo.BuildVO">
+		insert into ssh_build(no, title, user_no, nickname, content)
+		values(seq_ssh_build_no.nextval, #{title}, #{userNo}, #{nickname}, #{content})
+	</insert>
+	
+	<!-- 빌드 등록(비회원) -->
+	<insert id="insertBuildGuest" parameterType="kr.ac.kopo.build.vo.BuildVO">
+		insert into ssh_build(no, title, nickname, password, content)
+		values(seq_ssh_build_no.nextval, #{title}, #{nickname}, #{password}, #{content})
+	</insert>
+	
+	<!-- 전체빌드 조회 -->
+	<select id="selectAllBuild" resultType="kr.ac.kopo.build.vo.BuildVO">
+		select no, title, nickname, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt
+		  from ssh_build
+		 order by no desc
+	</select>
+	
+	<!-- 빌드 조회(제목) -->
+	<select id="selectBuildByTitle" parameterType="String" resultType="kr.ac.kopo.build.vo.BuildVO">
+		select no, title, nickname, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt
+		  from ssh_build
+		 where title like '%#{title}%'
+		 order by no desc
+	</select>
+	
+	<!-- 빌드 조회(본인) -->
+	<select id="selectMyBuild" parameterType="int" resultType="kr.ac.kopo.build.vo.BuildVO">
+		select no, title, nickname, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt
+		  from ssh_build
+		 where user_no = #{no}
+	</select>
+	
+	<!-- 빌드 삭제 -->
+	<delete id="deleteBuild" parameterType="int">
+		delete 
+		  from ssh_build
+		 where no = #{no}
+	</delete>
+	
+	<!-- 빌드 수정 -->
+	<update id="updateBuild" parameterType="kr.ac.kopo.build.vo.BuildVO">
+		update ssh_build
+		   set title = #{title}, content = #{content}
+		 where no = #{no}
+	</update>
+	
+	<!-- 빌드 조회수 증가 -->
+	<update id="upViewCnt" parameterType="int">
+		update ssh_build
+		   set view_cnt = view_cnt + 1
+		 where no = #{no}
+	</update>
+	
+	<!-- 빌드 추천 -->
+	<update id="upRecommendCnt" parameterType="int">
+		update ssh_build
+		   set recommend_cnt = recommend_cnt + 1
+		 where no = #{no}
+	</update>
+</mapper>

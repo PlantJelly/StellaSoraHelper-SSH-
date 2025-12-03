@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+table {
+	width: 100%;
+}
+
+table, th, td {
+	border: 1px solid #D4E0EE;
+	border-collapse: collapse;
+	padding: 0.2% 1%;
+	color: #555;
+}
+
+td a:link, a:visited {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+td a:hover {
+	text-decoration: underline;
+}
+
+td input {
+	font-size: 0.8m;
+}
+
+textarea {
+	font-size: 1m;
+}

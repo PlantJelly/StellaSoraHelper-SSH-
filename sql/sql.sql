@@ -1,0 +1,88 @@
+create table ssh_member(
+no number(7) primary key,
+id varchar2(100) not null unique,
+password varchar2(100) not null,
+nickname varchar2(100) unique,
+phone_number varchar2(20),
+email varchar2(100),
+reg_date date default sysdate
+);
+
+create sequence seq_ssh_member_no;
+
+alter table ssh_member add type varchar2(10) default 'USER' not null;
+
+create table ssh_build(
+no number(7) primary key,
+title varchar2(200) not null,
+user_no number(7),
+nickname varchar2(100) not null,
+password varchar2(100),
+content varchar2(1000) not null,
+reg_date date default sysdate,
+view_cnt number(5) default 0,
+recommend_cnt number(5) default 0,
+constraint fk_build_user_no foreign key(user_no) references ssh_member(no) on delete set null
+);
+
+create sequence seq_ssh_build_no;
+
+create table ssh_character(
+no number(7) primary key,
+name varchar2(100) not null,
+img_path varchar2(100)
+);
+
+create sequence seq_ssh_character_no;
+
+create table ssh_potential(
+id varchar2(100) primary key,
+name varchar2(100) not null,
+description varchar2(200) not null,
+char_no number(5) not null,
+constraint fk_pot_char_no foreign key(char_no) references ssh_character(no)
+);
+
+create table ssh_build_detail(
+build_no number(7) not null,
+type varchar2(100),
+char_no number(7) not null,
+pot_id varchar2(100) not null,
+constraint fk_detail_build_no foreign key(build_no) references ssh_build(no) on delete cascade,
+constraint fk_detail_char_no foreign key(char_no) references ssh_character(no),
+constraint fk_detail_pot_id foreign key(pot_id) references ssh_potential(id)
+);
+
+create table ssh_reply(
+no number(7) primary key,
+content varchar2(1000) not null,
+user_no number(7),
+nickname varchar2(100) not null,
+password varchar2(100),
+reg_date date default sysdate,
+build_no number(7) not null,
+constraint fk_reply_build_no foreign key(build_no) references ssh_build(no) on delete cascade,
+constraint fk_reply_user_no foreign key(user_no) references ssh_member(no) on delete set null
+);
+
+create sequence seq_ssh_reply_no;
+
+commit;
+
+select *
+  from ssh_member;
+  
+select *
+  from ssh_build;
+  
+select *
+  from ssh_character;
+
+select *
+  from ssh_potential;
+
+select *
+  from ssh_build_detail;
+
+select *
+  from ssh_reply;

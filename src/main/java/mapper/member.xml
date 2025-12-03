@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MemberDAO">
+	<!-- ID 중복체크 -->
+	<select id="checkBooleanId" resultType="String" parameterType="String">
+		select id
+		  from ssh_member
+		 where id=#{id}
+	</select>
+	
+	<!-- 닉네임 중복체크 -->
+	<select id="checkBooleanNickname" resultType="String" parameterType="String">
+		select nickname
+		  from ssh_member
+		 where nickname=#{nickname}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="register" parameterType="kr.ac.kopo.member.vo.MemberVO">
+		insert into ssh_member(no, id, password, nickname, phone_number, email)
+		values(seq_ssh_member_no.nextval, #{id}, #{password}, #{nickname}, #{phoneNumber}, #{email})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="kr.ac.kopo.member.vo.MemberVO" parameterType="kr.ac.kopo.member.vo.MemberVO">
+		select no, id, password, nickname, phone_number as phoneNumber, email
+		  from ssh_member
+		 where id = #{id} and password = #{password}
+	</select>
+</mapper>

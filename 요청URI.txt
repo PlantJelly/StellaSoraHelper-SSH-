@@ -1,0 +1,29 @@
+	uri						기능							Controller
+------------------------------------------------------------------------------------
+*/
+/board						게시판 관련
+/board/list.do				게시글 목록					BoardListController
+/board/write.do				게시글 등록					BoardWriteController
+/board/writeForm.do			게시글 등록 폼					BoardWriteFormController
+*/ 보류
+
+/build						빌드 관련
+/build/list.do				빌드 목록						BuildListController
+/build/write.do				빌드 등록						BuildWriteController
+/build/writeForm.do			빌드 등록 폼					BuildWriteFormController
+
+/book						도감 관련
+/book/list.do				도감 전체보기					BookListController
+/book/characterSelect.do	캐릭터 선택					BookCharacterSelectController
+/book/characterDetail.do	캐릭터 상세					BookCharacterDetailController
+
+/member						회원 관련
+/member/registerForm.do		회원가입 폼					MemberRegisterFormController
+/member/register.do			회원가입						MemberRegisterController
+/member/myPage.do			마이페이지						MemberMyPageController
+/member/loginForm.do		로그인 폼						MemberLoginFormController
+/member/login.do			로그인						MemberLoginController
+
+/admin/build/list.do		관리자 빌드? 목록				AdminBuildListController
+/admin/member/list.do		관리자 회원 목록				AdminMemberListController
+/admin/book
