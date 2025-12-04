@@ -3,7 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="mybatis.properties" />
+  <properties resource="mybatis/mybatis.properties" />
+  <typeAliases>
+  	<typeAlias type="kr.ac.kopo.build.vo.BuildVO" alias="BuildVO"/>
+  	<typeAlias type="kr.ac.kopo.member.vo.MemberVO" alias="MemberVO"/>
+  </typeAliases>
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -16,7 +20,7 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="mapper/build.xml"/>
-    <mapper resource="mapper/member.xml"/>
+    <mapper resource="mybatis/mapper/build.xml"/>
+    <mapper resource="mybatis/mapper/member.xml"/>
   </mappers>
 </configuration>

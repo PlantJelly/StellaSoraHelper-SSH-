@@ -18,14 +18,14 @@
 	</select>
 	
 	<!-- 회원가입 -->
-	<insert id="register" parameterType="kr.ac.kopo.member.vo.MemberVO">
+	<insert id="register" parameterType="MemberVO">
 		insert into ssh_member(no, id, password, nickname, phone_number, email)
 		values(seq_ssh_member_no.nextval, #{id}, #{password}, #{nickname}, #{phoneNumber}, #{email})
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="login" resultType="kr.ac.kopo.member.vo.MemberVO" parameterType="kr.ac.kopo.member.vo.MemberVO">
-		select no, id, password, nickname, phone_number as phoneNumber, email
+	<select id="login" resultType="MemberVO" parameterType="MemberVO">
+		select no, id, password, nickname, phone_number as phoneNumber, email, to_char(reg_date, 'YYYY-MM-DD') as regDate
 		  from ssh_member
 		 where id = #{id} and password = #{password}
 	</select>

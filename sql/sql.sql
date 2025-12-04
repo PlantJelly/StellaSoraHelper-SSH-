@@ -75,6 +75,13 @@ select *
 select *
   from ssh_build;
   
+select no
+  from ssh_build
+ ;
+ 
+insert into ssh_build(no, title, nickname, password, content)
+values(seq_ssh_build_no.nextval, 'test2', 'test2', 'test2', 'test2');
+  
 select *
   from ssh_character;
 

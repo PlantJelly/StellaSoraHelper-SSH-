@@ -2,55 +2,65 @@ package kr.ac.kopo.build.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
+import kr.ac.kopo.build.dao.BuildDAO;
+import kr.ac.kopo.build.dao.BuildDAOImpl;
 import kr.ac.kopo.build.vo.BuildVO;
-import kr.ac.kopo.mybatis.MybatisConfig;
 
 public class BuildServiceImpl implements BuildService {
 	
-	SqlSession session;
+	BuildDAO buildDao;
 
 	public BuildServiceImpl() {
-		session = new MybatisConfig().getSession();
+		buildDao = new BuildDAOImpl();
 	}
 
 	@Override
 	public List<BuildVO> selectAllBuild() throws Exception {
-		List<BuildVO> list = session.selectList("dao.BuildDAO.selectAllBuild");
+		List<BuildVO> list = buildDao.selectAllBuild();
 		return list;
 	}
 
 	@Override
 	public List<BuildVO> selectBuildByTitle(String searchTitle) throws Exception {
-		List<BuildVO> list = session.selectList("dao.BuildDAO.selectBuildByTitle", searchTitle);
+		List<BuildVO> list = buildDao.selectBuildByTitle(searchTitle);
 		return list;
 	}
 
 	@Override
+	public List<BuildVO> selectMyBuild(int userNo) throws Exception {
+		List<BuildVO> list = buildDao.selectMyBuild(userNo);
+		return list;
+	}
+
+	@Override
+	public BuildVO selectDetail(int buildNo) throws Exception {
+		BuildVO build = buildDao.selectDetail(buildNo);
+		return build;
+	}
+
+	@Override
 	public void insertBuild(BuildVO build) throws Exception {
-		session.insert("dao.BuildDAO.insertBuild", build);
+		buildDao.insertBuild(build);
 	}
 
 	@Override
 	public void updateBuild(BuildVO build) throws Exception {
-		session.update("dao.BuildDAO.updateBuild", build);
+		buildDao.updateBuild(build);
 	}
 
 	@Override
 	public void deleteBuild(int deleteNo) throws Exception {
-		session.delete("dao.BuildDAO.deleteBuild", deleteNo);
+		buildDao.deleteBuild(deleteNo);
 	}
 
 	@Override
 	public void upViewCnt(int buildNo) throws Exception {
-		session.update("dao.BuildDAO.upViewCnt", buildNo);
+		buildDao.upViewCnt(buildNo);
 	}
 
 	@Override
 	public void upRecommentCnt(int buildNo) throws Exception {
-		session.update("dao.BuildDAO.upRecommendCnt", buildNo);		
+		buildDao.upRecommentCnt(buildNo);
 	}
 
-	
 }

@@ -32,19 +32,15 @@
 		<button onclick="tapOpen('delete')">회원 탈퇴</button>
 		<hr>
 		<div class="tabContent" id="detail" style="display:block;">
-			<h3>회원 정보</h3>
 			<jsp:include page="/member/mypageTabs/memberDetail.jsp" />
 		</div>
 		<div class="tabContent" id="build" style="display:none;">
-			<h3>내 빌드</h3>
 			<jsp:include page="/member/mypageTabs/myBuild.jsp" />
 		</div>
 		<div class="tabContent" id="edit" style="display:none;">
-			<h3>정보 수정</h3>
 			<jsp:include page="/member/mypageTabs/editMember.jsp" />
 		</div>
 		<div class="tabContent" id="delete" style="display:none;">
-			<h3>회원 탈퇴</h3>
 			<jsp:include page="/member/mypageTabs/memberDelete.jsp" />
 		</div>
 	</section>
