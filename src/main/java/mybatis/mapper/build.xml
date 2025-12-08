@@ -7,6 +7,9 @@
 		select no, title, nickname, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt, rownum as rNum
 		  from ssh_build
 	</sql>
+	<sql id="pageSelect">
+		where rNum between (#{page} - 1) * 10 + 1 and #{page} * 10
+	</sql>
 	<!-- 빌드 등록(회원) -->
 	<insert id="insertBuildUser" parameterType="BuildVO">
 		insert into ssh_build(no, title, user_no, nickname, content)
@@ -20,26 +23,33 @@
 	</insert>
 	
 	<!-- 전체빌드 조회 -->
-	<select id="selectAllBuild" parameterType="map" resultType="BuildVO">
+	<select id="selectAllBuild" parameterType="int" resultType="BuildVO">
 		select *
 		  from (
 		<include refid="selectBuild" />
 		 order by no desc
 		 )
-		 where rNum between (#{page} - 1) * 10 + 1 and #{page} * 10
+		<include refid="pageSelect" />
 	</select>
 	
 	<!-- 빌드 조회(제목) -->
-	<select id="selectBuildByTitle" parameterType="String" resultType="BuildVO">
-		<include refid="selectBuild" />
-		 where title like '%${title}%'
-		 order by no desc
+	<select id="selectBuildByTitle" parameterType="map" resultType="BuildVO">
+		select *
+		  from (
+				<include refid="selectBuild" />
+				 where title like '%${title}%'
+				 order by no desc
+		       )
+		 <include refid="pageSelect" />
 	</select>
 	
 	<!-- 빌드 조회(본인) -->
 	<select id="selectMyBuild" parameterType="int" resultType="BuildVO">
-		<include refid="selectBuild" />
-		 where user_no = #{no}
+		select *
+		  from (
+				<include refid="selectBuild" />
+				 where user_no = #{no}
+		       )
 	</select>
 	
 	<!-- 빌드 상세 조회 -->
@@ -47,6 +57,11 @@
 		select title, nickname, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt
 		  from ssh_build
 		 where no = #{no}
+	</select>
+	
+	<select id="countBuild" resultType="int">
+		select count(*)
+		  from ssh_build
 	</select>
 	
 	<!-- 빌드 삭제 -->

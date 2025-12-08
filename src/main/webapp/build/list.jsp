@@ -53,6 +53,25 @@
 		</table>
 		<br>
 		<button id="addBtn">새글등록</button>
+		<br>
+		<div class="pagination">
+		    <c:if test="${startPage > 10}">
+		        <a href="list.do?page=${startPage - 1}">[이전]</a>
+		    </c:if>
+		    <c:forEach var="i" begin="${startPage}" end="${endPage}">
+		        <c:choose>
+		            <c:when test="${i == page}">
+		                <strong style="color:red;">[${i}]</strong>
+		            </c:when>
+		            <c:otherwise>
+		                <a href="list.do?page=${i}">[${i}]</a>
+		            </c:otherwise>
+		        </c:choose>
+		    </c:forEach>
+		    <c:if test="${endPage < lastPage}">
+		        <a href="list.do?page=${endPage + 1}">[다음]</a>
+		    </c:if>
+		</div>
 	</div>
 	</section>
 	<footer>

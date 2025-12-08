@@ -1,6 +1,7 @@
 package kr.ac.kopo.build.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -16,21 +17,21 @@ public class BuildDAOImpl implements BuildDAO {
 	}
 
 	@Override
-	public List<BuildVO> selectAllBuild() throws Exception {
-		List<BuildVO> list = session.selectList("dao.BuildDAO.selectAllBuild");
+	public List<BuildVO> selectAllBuild(int page) throws Exception {
+		List<BuildVO> list = session.selectList("dao.BuildDAO.selectAllBuild", page);
 		return list;
 	}
 
 	@Override
-	public List<BuildVO> selectBuildByTitle(String searchTitle) throws Exception {
-		List<BuildVO> list = session.selectList("dao.BuildDAO.selectBuildByTitle", searchTitle);
+	public List<BuildVO> selectBuildByTitle(Map map) throws Exception {
+		List<BuildVO> list = session.selectList("dao.BuildDAO.selectBuildByTitle", map);
 		return list;
 	}
 
 	
 	@Override
-	public List<BuildVO> selectMyBuild(int userNo) throws Exception {
-		List<BuildVO> list = session.selectList("dao.BuildDAO.selectMyBuild", userNo);
+	public List<BuildVO> selectMyBuild(int no) throws Exception {
+		List<BuildVO> list = session.selectList("dao.BuildDAO.selectMyBuild", no);
 		return list;
 	}
 
@@ -38,6 +39,12 @@ public class BuildDAOImpl implements BuildDAO {
 	public BuildVO selectDetail(int buildNo) throws Exception {
 		BuildVO build = session.selectOne("dao.BuildDAO.selectDetail", buildNo);
 		return build;
+	}
+
+	@Override
+	public int countBuild() throws Exception {
+		int no = session.selectOne("dao.BuildDAO.countBuild");
+		return no;
 	}
 
 	@Override

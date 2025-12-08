@@ -1,6 +1,7 @@
 package kr.ac.kopo.build.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.kopo.build.dao.BuildDAO;
 import kr.ac.kopo.build.dao.BuildDAOImpl;
@@ -15,20 +16,20 @@ public class BuildServiceImpl implements BuildService {
 	}
 
 	@Override
-	public List<BuildVO> selectAllBuild() throws Exception {
-		List<BuildVO> list = buildDao.selectAllBuild();
+	public List<BuildVO> selectAllBuild(int page) throws Exception {
+		List<BuildVO> list = buildDao.selectAllBuild(page);
 		return list;
 	}
 
 	@Override
-	public List<BuildVO> selectBuildByTitle(String searchTitle) throws Exception {
-		List<BuildVO> list = buildDao.selectBuildByTitle(searchTitle);
+	public List<BuildVO> selectBuildByTitle(Map map) throws Exception {
+		List<BuildVO> list = buildDao.selectBuildByTitle(map);
 		return list;
 	}
 
 	@Override
-	public List<BuildVO> selectMyBuild(int userNo) throws Exception {
-		List<BuildVO> list = buildDao.selectMyBuild(userNo);
+	public List<BuildVO> selectMyBuild(int no) throws Exception {
+		List<BuildVO> list = buildDao.selectMyBuild(no);
 		return list;
 	}
 
@@ -36,6 +37,12 @@ public class BuildServiceImpl implements BuildService {
 	public BuildVO selectDetail(int buildNo) throws Exception {
 		BuildVO build = buildDao.selectDetail(buildNo);
 		return build;
+	}
+
+	@Override
+	public int countBuild() throws Exception {
+		int no = buildDao.countBuild();
+		return no;
 	}
 
 	@Override

@@ -72,6 +72,10 @@ commit;
 select *
   from ssh_member;
   
+update ssh_member
+   set type = 'ADMIN'
+ where no = 3;
+
 select *
   from ssh_build;
   

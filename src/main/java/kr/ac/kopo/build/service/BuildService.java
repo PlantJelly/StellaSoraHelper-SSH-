@@ -1,6 +1,7 @@
 package kr.ac.kopo.build.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.kopo.build.vo.BuildVO;
 
@@ -8,23 +9,24 @@ public interface BuildService {
 	
 	/**
 	 * 전체 빌드 조회
+	 * @param page
 	 * @return 전체 빌드 배열(BuildVO형)
 	 */
-	List<BuildVO> selectAllBuild() throws Exception;
+	List<BuildVO> selectAllBuild(int page) throws Exception;
 	
 	/**
 	 * 빌드 제목 검색
-	 * @param searchTitle
+	 * @param title, page Map
 	 * @return 빌드 배열(BuildVO형)
 	 */
-	List<BuildVO> selectBuildByTitle(String searchTitle) throws Exception;
+	List<BuildVO> selectBuildByTitle(Map map) throws Exception;
 	
 	/**
 	 * 내 빌드 검색
-	 * @param userNo
+	 * @param userNo, page Map
 	 * @return 빌드 배열(BuildVO형)
 	 */
-	List<BuildVO> selectMyBuild(int userNo) throws Exception;
+	List<BuildVO> selectMyBuild(int no) throws Exception;
 	
 	/**
 	 * 빌드 상세보기
@@ -32,6 +34,13 @@ public interface BuildService {
 	 * @return 빌드(BuildVO형)
 	 */
 	BuildVO selectDetail(int buildNo) throws Exception;
+	
+	/**
+	 * 글 개수 조회
+	 * @return 글 개수
+	 * @throws Exception
+	 */
+	int countBuild() throws Exception;
 
 	/**
 	 * 빌드 작성
