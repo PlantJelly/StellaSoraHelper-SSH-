@@ -79,12 +79,16 @@ update ssh_member
 select *
   from ssh_build;
   
-select no
+select *
   from ssh_build
+ where user_no = 1
  ;
  
 insert into ssh_build(no, title, nickname, password, content)
 values(seq_ssh_build_no.nextval, 'test2', 'test2', 'test2', 'test2');
+  
+insert into ssh_build(no, title, nickname, user_no, content)
+values(seq_ssh_build_no.nextval, 'test3', 'test', 1, 'test3');
   
 select *
   from ssh_character;

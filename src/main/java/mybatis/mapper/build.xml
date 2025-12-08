@@ -10,16 +10,10 @@
 	<sql id="pageSelect">
 		where rNum between (#{page} - 1) * 10 + 1 and #{page} * 10
 	</sql>
-	<!-- 빌드 등록(회원) -->
-	<insert id="insertBuildUser" parameterType="BuildVO">
-		insert into ssh_build(no, title, user_no, nickname, content)
-		values(seq_ssh_build_no.nextval, #{title}, #{userNo}, #{nickname}, #{content})
-	</insert>
-	
-	<!-- 빌드 등록(비회원) -->
-	<insert id="insertBuildGuest" parameterType="BuildVO">
-		insert into ssh_build(no, title, nickname, password, content)
-		values(seq_ssh_build_no.nextval, #{title}, #{nickname}, #{password}, #{content})
+	<!-- 빌드 등록 -->
+	<insert id="insertBuild" parameterType="BuildVO">
+		insert into ssh_build(no, title, user_no, nickname, password, content)
+		values(seq_ssh_build_no.nextval, #{title}, #{userNo, jdbcType=NUMERIC}, #{nickname}, #{password, jdbcType=VARCHAR}, #{content})
 	</insert>
 	
 	<!-- 전체빌드 조회 -->
@@ -45,11 +39,8 @@
 	
 	<!-- 빌드 조회(본인) -->
 	<select id="selectMyBuild" parameterType="int" resultType="BuildVO">
-		select *
-		  from (
-				<include refid="selectBuild" />
-				 where user_no = #{no}
-		       )
+		<include refid="selectBuild" />
+		 where user_no = #{no}
 	</select>
 	
 	<!-- 빌드 상세 조회 -->
@@ -59,6 +50,7 @@
 		 where no = #{no}
 	</select>
 	
+	<!-- 글 개수 조회 -->
 	<select id="countBuild" resultType="int">
 		select count(*)
 		  from ssh_build

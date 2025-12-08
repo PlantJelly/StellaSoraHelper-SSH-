@@ -2,21 +2,21 @@ package kr.ac.kopo.build.vo;
 
 public class BuildVO {
 	
-	private int no;
+	private Integer no;
 	private String title;
-	private int userNo;
+	private Integer userNo;
 	private String nickname;
 	private String password;
 	private String content;
 	private String regDate;
-	private int viewCnt;
-	private int recommendCnt;
+	private Integer viewCnt;
+	private Integer recommendCnt;
 	
 	public BuildVO() {
 		super();
 	}
 	
-	public BuildVO(String title, int userNo, String nickname, String content) {
+	public BuildVO(String title, Integer userNo, String nickname, String content) {
 		super();
 		this.title = title;
 		this.userNo = userNo;
@@ -32,8 +32,8 @@ public class BuildVO {
 		this.content = content;
 	}
 
-	public BuildVO(int no, String title, int userNo, String nickname, String password, String content, String regDate,
-			int viewCnt, int recommendCnt) {
+	public BuildVO(Integer no, String title, Integer userNo, String nickname, String password, String content, String regDate,
+			Integer viewCnt, Integer recommendCnt) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -46,7 +46,7 @@ public class BuildVO {
 		this.recommendCnt = recommendCnt;
 	}
 
-	public int getNo() {
+	public Integer getNo() {
 		return no;
 	}
 
@@ -62,7 +62,7 @@ public class BuildVO {
 		this.title = title;
 	}
 
-	public int getUserNo() {
+	public Integer getUserNo() {
 		return userNo;
 	}
 
@@ -102,7 +102,7 @@ public class BuildVO {
 		this.regDate = regDate;
 	}
 
-	public int getViewCnt() {
+	public Integer getViewCnt() {
 		return viewCnt;
 	}
 
@@ -110,7 +110,7 @@ public class BuildVO {
 		this.viewCnt = viewCnt;
 	}
 
-	public int getRecommendCnt() {
+	public Integer getRecommendCnt() {
 		return recommendCnt;
 	}
 

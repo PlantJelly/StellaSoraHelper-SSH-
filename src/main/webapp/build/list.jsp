@@ -8,6 +8,11 @@
 <title>SSH : Build List</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
+<style>
+	a {
+	text-decoration: none;
+	}
+</style>
 <script>
 	window.onload = function(){
 		let addBtn = document.querySelector("#addBtn")
@@ -53,15 +58,14 @@
 		</table>
 		<br>
 		<button id="addBtn">새글등록</button>
-		<br>
-		<div class="pagination">
+		<div>
 		    <c:if test="${startPage > 10}">
 		        <a href="list.do?page=${startPage - 1}">[이전]</a>
 		    </c:if>
 		    <c:forEach var="i" begin="${startPage}" end="${endPage}">
 		        <c:choose>
 		            <c:when test="${i == page}">
-		                <strong style="color:red;">[${i}]</strong>
+		                <strong style="color:blue;">[${i}]</strong>
 		            </c:when>
 		            <c:otherwise>
 		                <a href="list.do?page=${i}">[${i}]</a>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,10 +36,27 @@
 					</td>
 				</tr>
 				<tr>
-					<th width="25%">작성자</th>
+					<c:if test="${ not empty userVO }">
+						
+					<th width="25%">닉네임</th>
 					<td>
-						<input type="text" name="writer" required="required">
+						${ userVO.nickname }
+						<input type="hidden" name="nickname" value="${ userVO.nickname }">
+						<input type="hidden" name="userNo" value="${ userVO.no }">
 					</td>
+					</c:if>
+					<c:if test="${ empty userVO }">
+					<th width="25%">닉네임</th>
+					<td>
+						<input type="text" name="nickname" required="required">
+					</td>
+						<tr>
+							<th width="25%">비밀번호</th>
+							<td>
+								<input type="password" name="password" required="required">
+							</td>
+						</tr>	
+					</c:if>
 				</tr>
 				<tr>
 					<th width="25%">내용</th>

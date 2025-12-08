@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 				<th width="7%">번호</th>
 				<th>제목</th>
 				<th width="20%">작성자</th>
-				<th width="15%">등록일</th>
+				<th width="17%">등록일</th>
 				<th width="7%">조회</th>
 				<th width="7%">추천</th>
 			</tr>
@@ -22,7 +23,7 @@
 				<tr>
 					<td>${ build.no }</td>
 					<td>
-						<a href="detail.do?no=${ build.no }">
+						<a href="${ pageContext.request.contextPath }/build/detail.do?no=${ build.no }">
 							<c:out value="${ build.title }"/>
 						</a>
 					</td>

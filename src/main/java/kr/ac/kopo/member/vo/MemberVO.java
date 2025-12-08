@@ -2,7 +2,7 @@ package kr.ac.kopo.member.vo;
 
 public class MemberVO {
 
-	private int no;
+	private Integer no;
 	private String id;
 	private String password;
 	private String nickname;
@@ -29,7 +29,7 @@ public class MemberVO {
 		this.email = email;
 	}
 
-	public MemberVO(int no, String id, String password, String nickname, String phoneNumber, String email,
+	public MemberVO(Integer no, String id, String password, String nickname, String phoneNumber, String email,
 			String regDate) {
 		super();
 		this.no = no;
@@ -41,7 +41,7 @@ public class MemberVO {
 		this.regDate = regDate;
 	}
 
-	public int getNo() {
+	public Integer getNo() {
 		return no;
 	}
 

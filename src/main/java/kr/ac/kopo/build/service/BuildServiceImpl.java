@@ -35,6 +35,7 @@ public class BuildServiceImpl implements BuildService {
 
 	@Override
 	public BuildVO selectDetail(int buildNo) throws Exception {
+		buildDao.upViewCnt(buildNo);
 		BuildVO build = buildDao.selectDetail(buildNo);
 		return build;
 	}
