@@ -36,21 +36,23 @@ img_path varchar2(100)
 create sequence seq_ssh_character_no;
 
 create table ssh_potential(
-id varchar2(100) primary key,
+no number(7) not null,
 name varchar2(100) not null,
-description varchar2(200) not null,
-char_no number(5) not null,
-constraint fk_pot_char_no foreign key(char_no) references ssh_character(no)
+char_no number(7) not null,
+rank varchar2(20) not null,
+type varchar2(20),
+img_path varchar2(100),
+constraint pk_ssh_potential primary key (char_no, no),
+constraint fk_pot_char_no foreign key(char_no) references ssh_character(no) on delete cascade
 );
 
 create table ssh_build_detail(
 build_no number(7) not null,
 type varchar2(100),
 char_no number(7) not null,
-pot_id varchar2(100) not null,
+pot_no number(7) not null,
 constraint fk_detail_build_no foreign key(build_no) references ssh_build(no) on delete cascade,
-constraint fk_detail_char_no foreign key(char_no) references ssh_character(no),
-constraint fk_detail_pot_id foreign key(pot_id) references ssh_potential(id)
+constraint fk_detail_potential foreign key(char_no, pot_no) references ssh_potential(char_no, no) on delete cascade
 );
 
 create table ssh_reply(
@@ -67,6 +69,14 @@ constraint fk_reply_user_no foreign key(user_no) references ssh_member(no) on de
 
 create sequence seq_ssh_reply_no;
 
+create table ssh_build_recommend(
+build_no number(7) not null,
+user_no number(7) not null,
+reg_date date default sysdate,
+constraint fk_build_rec_build_no foreign key(build_no) references ssh_build(no) on delete cascade,
+constraint fk_build_rec_user_no foreign key(user_no) references ssh_member(no) on delete cascade
+);
+
 commit;
 
 select *
@@ -81,8 +91,12 @@ select *
   
 select *
   from ssh_build
- where user_no = 1
+ where no = 2
  ;
+ 
+update ssh_build
+   set view_cnt = view_cnt + 1
+   where no = 2;
  
 insert into ssh_build(no, title, nickname, password, content)
 values(seq_ssh_build_no.nextval, 'test2', 'test2', 'test2', 'test2');
@@ -101,3 +115,7 @@ select *
 
 select *
   from ssh_reply;
+  
+drop table ssh_build_detail cascade constraints;
+
+drop table ssh_potential cascade constraints;

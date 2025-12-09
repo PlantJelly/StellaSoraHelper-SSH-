@@ -23,7 +23,7 @@
 				<tr>
 					<td>${ build.no }</td>
 					<td>
-						<a href="${ pageContext.request.contextPath }/build/detail.do?no=${ build.no }">
+						<a href="${ pageContext.request.contextPath }/build/detail.do?no=${ build.no }&page=build">
 							<c:out value="${ build.title }"/>
 						</a>
 					</td>

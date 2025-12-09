@@ -5,7 +5,7 @@
 	<tr>
 		<td rowspan="2" style="width:260px; height:85px;">
 			<a href="${ pageContext.request.contextPath }/index.jsp">
-				<img src="${ pageContext.request.contextPath }/resources/images/logo.png">
+				<img src="${ pageContext.request.contextPath }/resources/images/common/logo.png">
 			</a>
 		</td>
 		<c:if test="${ empty userVO }">

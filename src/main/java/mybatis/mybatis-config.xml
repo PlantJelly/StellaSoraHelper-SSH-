@@ -7,6 +7,7 @@
   <typeAliases>
   	<typeAlias type="kr.ac.kopo.build.vo.BuildVO" alias="BuildVO"/>
   	<typeAlias type="kr.ac.kopo.member.vo.MemberVO" alias="MemberVO"/>
+  	<typeAlias type="kr.ac.kopo.reply.vo.ReplyVO" alias="ReplyVO"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -22,5 +23,6 @@
   <mappers>
     <mapper resource="mybatis/mapper/build.xml"/>
     <mapper resource="mybatis/mapper/member.xml"/>
+    <mapper resource="mybatis/mapper/reply.xml"/>
   </mappers>
 </configuration>

@@ -45,7 +45,7 @@
 				<tr>
 					<td>${ build.no }</td>
 					<td>
-						<a href="detail.do?no=${ build.no }">
+						<a href="detail.do?no=${ build.no }&page=${ page }">
 							<c:out value="${ build.title }"/>
 						</a>
 					</td>
