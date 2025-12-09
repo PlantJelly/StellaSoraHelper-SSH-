@@ -7,17 +7,15 @@
 <title>SSH : Login</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
 </head>
 <body>
 	<header>
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
 	<section>
-		<div align="center">
-			<hr>
+		<div class="container">
 			<h2>로그인</h2>
-			<hr>
-			<br>
 			<form action="${ pageContext.request.contextPath }/member/login.do" method="post">
 				<table>
 					<tr>
@@ -29,7 +27,9 @@
 						<td><input type="password" name="password"></td>
 					</tr>
 				</table>
-				<button type="submit">로그인</button>
+				<div class="form-actions">
+					<button type="submit">로그인</button>
+				</div>
 			</form>
 		</div>
 	</section>

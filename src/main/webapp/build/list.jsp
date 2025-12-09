@@ -8,11 +8,7 @@
 <title>SSH : Build List</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
-<style>
-	a {
-	text-decoration: none;
-	}
-</style>
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
 <script>
 	window.onload = function(){
 		let addBtn = document.querySelector("#addBtn")
@@ -27,12 +23,9 @@
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
 	<section>
-		<div align="center">
-		<hr>
+		<div class="container">
 		<h2>전체빌드 조회</h2>
-		<hr>
-		<br>
-		<table style="width : 80%; border : 1px solid black;">
+		<table class="data-table">
 			<tr>
 				<th width="6%">번호</th>
 				<th>제목</th>
@@ -56,19 +49,20 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<br>
-		<button id="addBtn">새글등록</button>
-		<div>
+		<div class="button-container-right">
+			<button id="addBtn">새글등록</button>
+		</div>
+		<div class="pagination">
 		    <c:if test="${startPage > 10}">
 		        <a href="list.do?page=${startPage - 1}">[이전]</a>
 		    </c:if>
 		    <c:forEach var="i" begin="${startPage}" end="${endPage}">
 		        <c:choose>
 		            <c:when test="${i == page}">
-		                <strong style="color:blue;">[${i}]</strong>
+		                <strong>${i}</strong>
 		            </c:when>
 		            <c:otherwise>
-		                <a href="list.do?page=${i}">[${i}]</a>
+		                <a href="list.do?page=${i}">${i}</a>
 		            </c:otherwise>
 		        </c:choose>
 		    </c:forEach>

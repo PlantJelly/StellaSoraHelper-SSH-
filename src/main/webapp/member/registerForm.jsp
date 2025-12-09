@@ -10,6 +10,7 @@
 <title>SSH : Register</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
 <script>
 	let checkedId = false
 	let checkedNickname = false
@@ -97,13 +98,10 @@
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
 	<section>
-		<div align="center" id="content">
-		<hr>
+		<div class="container" id="content">
 		<h2>회원가입</h2>
-		<hr>
-		<br>
 		<form action="${ pageContext.request.contextPath }/member/register.do" method="post" name="registerForm" onsubmit="return checkForm()">
-			<table border="1">
+			<table>
 				<tr>
 					<th>ID*</th>
 					<td>
@@ -137,10 +135,11 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<button type="submit" id="submitBtn">가입</button>
-			<button type="reset">초기화</button>
-			<button type="button" onclick="cancelBtn()">취소</button>
+			<div class="form-actions">
+				<button type="submit" id="submitBtn">가입</button>
+				<button type="reset">초기화</button>
+				<button type="button" onclick="cancelBtn()">취소</button>
+			</div>
 		</form>
 	</div>
 	</section>

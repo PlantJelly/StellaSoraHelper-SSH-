@@ -8,6 +8,7 @@
 <title>SSH : Build Write</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
 <script>
 	window.onload = function(){
 		let cancelBtn = document.querySelector("#cancelBtn")
@@ -22,13 +23,10 @@
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
 	<section>
-		<div align="center" id="content">
-		<hr>
+		<div class="container" id="content">
 		<h2>빌드 등록폼</h2>
-		<hr>
-		<br>
 		<form action="${ pageContext.request.contextPath }/build/write.do" method="post" name="writeForm">
-			<table border="1">
+			<table>
 				<tr>
 					<th width="25%">제목</th>
 					<td>
@@ -65,10 +63,11 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<button type="submit">등록</button>
-			<button type="reset">초기화</button>
-			<button type="button" id="cancelBtn">취소</button>
+			<div class="form-actions">
+				<button type="submit">등록</button>
+				<button type="reset">초기화</button>
+				<button type="button" id="cancelBtn">취소</button>
+			</div>
 		</form>
 	</div>
 	</section>

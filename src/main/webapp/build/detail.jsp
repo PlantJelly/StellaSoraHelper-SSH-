@@ -8,6 +8,7 @@
 <title>SSH : ${ buildDetail.title }</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
 <script>
 	window.onload = () =>{
 		let listBtn = document.querySelector("#listBtn")
@@ -27,28 +28,45 @@
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
 	<section>
-		<hr>
-		<h3>${ buildDetail.title }</h3>
-		<button id="editBtn">수정</button>
-		<p style="text-align:right;">닉네임 : ${ buildDetail.nickname } | 작성일 : ${ buildDetail.regDate }</p>
-		<hr>
-		<p style="text-align:right;">조회수 : ${ buildDetail.viewCnt } | 추천수 : ${ buildDetail.recommendCnt }</p>
-		<hr>
-		<p>${ buildDetail.content }</p>
-		<button>추천</button>
-		<br>
-		<c:forEach items="${ replyList }" var="reply">
-			<div style="border: 1px solid black;">
-				<p>${ reply.nickname }</p>
-				<p>${ reply.regDate }</p>
-				<button id="editReplyBtn">수정</button>
-				<button id="deleteReplyBtn">삭제</button>
-				<hr>
-				<p>${ reply.content }</p>
+		<div class="container">
+			<div class="detail-header">
+				<h3>${ buildDetail.title }</h3>
+				<div class="detail-meta">
+					<span>닉네임 : ${ buildDetail.nickname }</span> | <span>작성일 : ${ buildDetail.regDate }</span>
+				</div>
+				<button id="editBtn">수정</button> <!-- Move button here -->
 			</div>
-		</c:forEach>
-		<%@ include file="/reply/reply.jsp" %>
-		<button id="listBtn">목록</button>
+			<div class="detail-meta-counts">
+				<span>조회수 : ${ buildDetail.viewCnt }</span> | <span>추천수 : ${ buildDetail.recommendCnt }</span>
+			</div>
+			<div class="detail-content">
+				<p>${ buildDetail.content }</p>
+			</div>
+			<div class="detail-actions">
+				<button>추천</button>
+			</div>
+
+			<div class="reply-section">
+				<h4>댓글</h4>
+				<c:forEach items="${ replyList }" var="reply">
+					<div class="reply-box">
+						<div class="reply-meta">
+							<strong>${ reply.nickname }</strong>
+							<small>${ reply.regDate }</small>
+						</div>
+						<div class="reply-content">
+							<p>${ reply.content }</p>
+						</div>
+						<div class="reply-actions">
+							<button id="editReplyBtn">수정</button>
+							<button id="deleteReplyBtn">삭제</button>
+						</div>
+					</div>
+				</c:forEach>
+				<%@ include file="/reply/reply.jsp" %>
+			</div>
+			<button id="listBtn">목록</button>
+		</div>
 	</section>
 	<footer>
 		<%@ include file="/include/footer.jsp" %>

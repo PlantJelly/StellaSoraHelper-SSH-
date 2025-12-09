@@ -1,0 +1,329 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* --- Reset & Global Styles --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #F8F9FA;
+    color: #333;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+section {
+    flex-grow: 1; /* section이 남은 공간을 모두 차지하도록 설정 */
+}
+
+a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Layout --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* 좌우 여백 자동 설정으로 중앙 정렬 */
+    padding: 2rem 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 0;
+    padding: 0 15%; /* 기존 여백 유지 */
+    border-bottom: 1px solid #dee2e6;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    margin: 0; /* 좌우 여백 제거 */
+    padding: 2rem;
+}
+
+
+/* --- Typography --- */
+h2 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 1rem;
+}
+
+
+/* --- Tables --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+}
+
+table th, table td {
+    border: none;
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: 500;
+    color: #495057;
+}
+
+table.data-table tr:hover {
+    background-color: #f1f3f5;
+}
+
+
+
+/* 폼 내부 테이블 스타일 */
+form table {
+    border: none;
+    margin: 0 auto; /* Center align table within form */
+}
+form table th {
+    background-color: transparent;
+    text-align: right;
+    font-weight: 700;
+    width: 25%;
+}
+form table td {
+    text-align: left;
+}
+form table tr:hover {
+    background-color: transparent;
+}
+form table, form th, form td {
+    border: none;
+}
+
+
+/* --- Forms & Buttons --- */
+input[type="text"],
+input[type="password"] {
+    width: 250px;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+button, input[type="button"] {
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 기본 버튼 */
+button {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+button:hover {
+    background-color: #5a6268;
+}
+
+/* "새글등록", "가입" 등 주요 액션 버튼 */
+button[type="submit"], #addBtn {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+button[type="submit"]:hover, #addBtn:hover {
+    background-color: #0b5ed7;
+}
+
+/* "초기화", "취소" 등 보조 액션 버튼 */
+button[type="reset"], button[type="button"] {
+    background-color: #f8f9fa;
+    color: #333;
+    border-color: #ced4da;
+}
+button[type="reset"]:hover, button[type="button"]:hover {
+    background-color: #e2e6ea;
+}
+
+
+/* --- Pagination --- */
+.pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+.pagination a, .pagination strong {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.pagination strong {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* --- Mypage Tabs --- */
+.tab-menu {
+	margin-bottom: 2rem;
+	border-bottom: 2px solid #dee2e6;
+	padding-bottom: 1rem;
+	text-align: center;
+}
+.tab-menu button {
+	margin: 0 5px;
+}
+
+/* --- Form Actions --- */
+.form-actions {
+	text-align: center;
+	margin-top: 2rem;
+}
+.form-actions button {
+	margin: 0 5px;
+}
+
+/* --- Build Detail Page --- */
+.detail-header {
+	padding-bottom: 1rem;
+	border-bottom: 2px solid #dee2e6;
+	margin-bottom: 1rem;
+    position: relative; /* For absolute positioning of edit button */
+}
+.detail-header h3 {
+	margin: 0;
+	font-size: 2rem;
+}
+.detail-meta {
+	text-align: right;
+	color: #6c757d;
+	font-size: 0.9rem;
+}
+.detail-meta-counts {
+	text-align: right;
+	color: #6c757d;
+	font-size: 0.9rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #dee2e6;
+	margin-bottom: 2rem;
+}
+.detail-content {
+	min-height: 200px;
+	line-height: 1.6;
+	font-size: 1.1rem;
+}
+.detail-actions {
+	text-align: center;
+	margin: 2rem 0;
+}
+
+/* --- Reply Section --- */
+.reply-section {
+	margin-top: 3rem;
+}
+.reply-section h4 {
+	font-size: 1.25rem;
+	border-bottom: 2px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+.reply-box {
+	padding: 15px;
+	border: 1px solid #e9ecef;
+	border-radius: 8px;
+	margin-bottom: 1rem;
+	background-color: #f8f9fa;
+}
+.reply-meta {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.9rem;
+	color: #6c757d;
+	margin-bottom: 10px;
+}
+.reply-content {
+	margin-bottom: 10px;
+}
+.reply-actions {
+	text-align: right;
+}
+.reply-actions button {
+	font-size: 0.8rem;
+	padding: 5px 10px;
+}
+/* --- Top Menu Layout --- */
+.top-menu-container {
+    display: flex;
+    align-items: center; /* 아이템들을 수직 중앙 정렬 */
+    justify-content: space-between; /* 로고를 왼쪽으로, 나머지 요소를 오른쪽으로 밀어냄 */
+    padding: 10px 0; /* 상하 패딩 추가 */
+}
+
+.top-menu-container .logo img {
+    height: 50px; /* 로고 크기 조정 */
+    vertical-align: middle;
+}
+
+.top-menu-container .user-info {
+    font-size: 1.1rem; /* Increased font size */
+    color: #6c757d;
+    margin-bottom: 5px; /* 사용자 정보와 버튼 사이 간격 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.top-menu-container .main-nav a {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-left: 10px;
+    color: #0d6efd;
+    text-decoration: none;
+    border: 1px solid #0d6efd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.top-menu-container .main-nav a:hover {
+    background-color: #0d6efd;
+    color: white;
+    text-decoration: none;
+}
+/* --- Custom Button Container --- */
+.button-container-right {
+    text-align: right;
+    margin-top: 1rem; /* Add some space above the button */
+}
+/* --- Build Detail Edit Button --- */
+#editBtn {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    font-size: 0.9rem; /* Similar to or slightly larger than nickname/date */
+    padding: 5px 10px; /* Adjust padding for size */
+}

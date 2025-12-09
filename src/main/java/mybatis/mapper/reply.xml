@@ -5,7 +5,7 @@
 <mapper namespace="dao.ReplyDAO">
 	<!-- 댓글 전체 조회 -->
 	<select id="selectAllByBuildNo" parameterType="int" resultType="ReplyVO">
-		select no, content, user_no as userNo, nickname, password, to_char(reg_date, 'yyyy-mm-dd/hh:mm:ss') as regDate, build_no as buildNo
+		select no, content, user_no as userNo, nickname, password, to_char(reg_date, 'yyyy-mm-dd/hh24:mi:ss') as regDate, build_no as buildNo
 		  from ssh_reply
 		 where build_no = #{buildNo}
 	</select>
