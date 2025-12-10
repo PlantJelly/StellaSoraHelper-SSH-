@@ -100,13 +100,13 @@
 	<section>
 		<div class="container" id="content">
 		<h2>회원가입</h2>
-		<form action="${ pageContext.request.contextPath }/member/register.do" method="post" name="registerForm" onsubmit="return checkForm()">
+		<form action="${ pageContext.request.contextPath }/member/register.do" method="post" name="registerForm" onsubmit="return checkForm()" class="form-centered">
 			<table>
 				<tr>
 					<th>ID*</th>
 					<td>
 						<input type="text" name="id" id="id">
-						<button type="button" onclick="checkId()">중복확인</button>
+						<button type="button" onclick="checkId()" class="inline-btn">중복확인</button>
 					</td>
 				</tr>
 				<tr>
@@ -119,7 +119,7 @@
 					<th>이름*</th>
 					<td>
 						<input type="text" name="nickname" id="nickname">
-						<button type="button" onclick="checkNickname()">중복확인</button>
+						<button type="button" onclick="checkNickname()" class="inline-btn">중복확인</button>
 					</td>
 				</tr>
 				<tr>

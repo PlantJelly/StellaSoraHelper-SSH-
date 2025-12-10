@@ -24,11 +24,11 @@
 	</header>
 	<section>
 		<div class="container" id="content">
-		<h2>빌드 등록폼</h2>
-		<form action="${ pageContext.request.contextPath }/build/write.do" method="post" name="writeForm">
+		<h2>빌드 등록</h2>
+		<form action="${ pageContext.request.contextPath }/build/write.do" method="post" name="writeForm" class="form-centered">
 			<table>
 				<tr>
-					<th width="25%">제목</th>
+					<th>제목</th>
 					<td>
 						<input type="text" name="title" required="required">
 					</td>
@@ -36,7 +36,7 @@
 				<tr>
 					<c:if test="${ not empty userVO }">
 						
-					<th width="25%">닉네임</th>
+					<th>닉네임</th>
 					<td>
 						${ userVO.nickname }
 						<input type="hidden" name="nickname" value="${ userVO.nickname }">
@@ -44,12 +44,12 @@
 					</td>
 					</c:if>
 					<c:if test="${ empty userVO }">
-					<th width="25%">닉네임</th>
+					<th>닉네임</th>
 					<td>
 						<input type="text" name="nickname" required="required">
 					</td>
 						<tr>
-							<th width="25%">비밀번호</th>
+							<th>비밀번호</th>
 							<td>
 								<input type="password" name="password" required="required">
 							</td>
@@ -57,9 +57,9 @@
 					</c:if>
 				</tr>
 				<tr>
-					<th width="25%">내용</th>
+					<th>내용</th>
 					<td>
-						<textarea rows="8" cols="100" name="content" required="required"></textarea>
+						<textarea rows="15" name="content" required="required"></textarea>
 					</td>
 				</tr>
 			</table>

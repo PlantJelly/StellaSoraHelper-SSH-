@@ -96,17 +96,21 @@ table.data-table tr:hover {
 
 /* 폼 내부 테이블 스타일 */
 form table {
+    width: auto; /* 테이블 너비를 내용에 맞게 자동 조절 */
     border: none;
-    margin: 0 auto; /* Center align table within form */
+    margin: 0 auto; /* 테이블 자체를 중앙 정렬 */
 }
 form table th {
     background-color: transparent;
     text-align: right;
     font-weight: 700;
-    width: 25%;
+    padding-right: 1.5rem; /* 라벨과 입력 필드 사이 간격 */
+    white-space: nowrap; /* 라벨 줄바꿈 방지 */
+    vertical-align: middle; /* 세로 중앙 정렬 */
 }
 form table td {
     text-align: left;
+    vertical-align: middle; /* 세로 중앙 정렬 */
 }
 form table tr:hover {
     background-color: transparent;
@@ -119,12 +123,13 @@ form table, form th, form td {
 /* --- Forms & Buttons --- */
 input[type="text"],
 input[type="password"] {
-    width: 250px;
+    width: 400px; /* 너비 증가 */
     padding: 8px 12px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus,
@@ -142,6 +147,25 @@ button, input[type="button"] {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
+    box-sizing: border-box;
+}
+
+/* 인풋 옆에 붙는 인라인 버튼용 스타일 */
+.inline-btn {
+    padding: 8px 12px;
+    margin-left: 5px;
+    width: auto;
+}
+
+/* 모든 폼의 textarea 스타일 통일 */
+form textarea {
+    width: 400px; /* 너비 통일 */
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    vertical-align: top;
 }
 
 /* 기본 버튼 */
@@ -208,6 +232,13 @@ button[type="reset"]:hover, button[type="button"]:hover {
 }
 .form-actions button {
 	margin: 0 5px;
+    padding: 8px 20px; /* 로그인 버튼 등 하단 버튼 높이 조절 */
+}
+
+/* --- Centered Form Style (DEPRECATED - form table is now centered) --- */
+.form-centered {
+    /* This class is no longer the primary centering mechanism */
+    /* It can be kept for other potential form-wide styles if needed */
 }
 
 /* --- Build Detail Page --- */
@@ -281,27 +312,29 @@ button[type="reset"]:hover, button[type="button"]:hover {
 /* --- Top Menu Layout --- */
 .top-menu-container {
     display: flex;
-    align-items: center; /* 아이템들을 수직 중앙 정렬 */
-    justify-content: space-between; /* 로고를 왼쪽으로, 나머지 요소를 오른쪽으로 밀어냄 */
-    padding: 10px 0; /* 상하 패딩 추가 */
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
 }
 
 .top-menu-container .logo img {
-    height: 50px; /* 로고 크기 조정 */
+    height: 50px;
     vertical-align: middle;
 }
 
-.top-menu-container .user-info {
-    font-size: 1.1rem; /* Increased font size */
-    color: #6c757d;
-    margin-bottom: 5px; /* 사용자 정보와 버튼 사이 간격 */
-    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+.top-menu-container .main-nav {
+    margin-left: 20px; /* 로고와 버튼 사이 간격 */
 }
 
 .top-menu-container .main-nav a {
     display: inline-block;
     padding: 8px 15px;
-    margin-left: 10px;
+    margin-right: 10px; /* 버튼들 사이 간격 */
     color: #0d6efd;
     text-decoration: none;
     border: 1px solid #0d6efd;
@@ -309,10 +342,20 @@ button[type="reset"]:hover, button[type="button"]:hover {
     transition: all 0.3s ease;
 }
 
+.top-menu-container .main-nav a:last-child {
+    margin-right: 0;
+}
+
 .top-menu-container .main-nav a:hover {
     background-color: #0d6efd;
     color: white;
     text-decoration: none;
+}
+
+.top-menu-container .user-info {
+    font-size: 1.1rem;
+    color: #6c757d;
+    white-space: nowrap;
 }
 /* --- Custom Button Container --- */
 .button-container-right {

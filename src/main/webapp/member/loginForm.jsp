@@ -16,7 +16,7 @@
 	<section>
 		<div class="container">
 			<h2>로그인</h2>
-			<form action="${ pageContext.request.contextPath }/member/login.do" method="post">
+			<form action="${ pageContext.request.contextPath }/member/login.do" method="post" class="form-centered">
 				<table>
 					<tr>
 						<th>ID</th>
