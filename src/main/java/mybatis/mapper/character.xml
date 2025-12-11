@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CharacterDAO">
+	<!-- 캐릭터 조회 -->
+	<select id="selectAllChar" resultType="CharacterVO">
+		select no, name, img_path as imgPath
+		  from ssh_character
+	</select>
+	
+	<!-- 캐릭터 단일 조회 -->
+	<select id="selectChar" parameterType="int" resultType="CharacterVO">
+		select no, name, img_path as imgPath
+		  from ssh_character
+		 where no = #{no}
+	</select>
+</mapper>

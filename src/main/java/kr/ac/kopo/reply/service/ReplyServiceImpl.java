@@ -8,7 +8,7 @@ import kr.ac.kopo.reply.vo.ReplyVO;
 
 public class ReplyServiceImpl implements ReplyService {
 	
-	ReplyDAO replyDao;
+	private ReplyDAO replyDao;
 	
 	public ReplyServiceImpl() {
 		replyDao = new ReplyDAOImpl();

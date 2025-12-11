@@ -30,16 +30,12 @@ public class PotentialVO {
         
         return "/resources/images/potential/icons/" + charNo + "/pot_" + no + ".png";
     }
-	
-	public String getCharProfilePath() {
-        return "/resources/images/character/" + charNo + ".png";
-    }
-	
+
 	public String getBgPath() {
         if (rank == null) {
         	return "";
         }
-        return "/resources/images/potential/background/" + rank + ".png";
+        return "/resources/images/potential/backgrounds/" + rank.toLowerCase() + ".png";
     }
 	
 	public Integer getNo() {

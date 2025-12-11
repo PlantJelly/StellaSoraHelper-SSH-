@@ -5,7 +5,7 @@ import kr.ac.kopo.recommend.dao.RecommendDAOImpl;
 
 public class RecommendServiceImpl implements RecommendService {
 	
-	RecommendDAO recommendDAO;
+	private RecommendDAO recommendDAO;
 
 	public RecommendServiceImpl() {
 		recommendDAO = new RecommendDAOImpl();

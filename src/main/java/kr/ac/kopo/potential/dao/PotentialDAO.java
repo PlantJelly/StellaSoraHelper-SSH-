@@ -8,4 +8,5 @@ public interface PotentialDAO {
 	
 	List<PotentialVO> selectPotential(int charNo) throws Exception;
 
+	List<Integer> selectCharNo() throws Exception;
 }

@@ -9,7 +9,7 @@ import kr.ac.kopo.build.vo.BuildVO;
 
 public class BuildServiceImpl implements BuildService {
 	
-	BuildDAO buildDao;
+	private BuildDAO buildDao;
 
 	public BuildServiceImpl() {
 		buildDao = new BuildDAOImpl();

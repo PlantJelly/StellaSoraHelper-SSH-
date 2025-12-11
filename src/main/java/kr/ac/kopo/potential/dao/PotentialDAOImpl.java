@@ -18,5 +18,15 @@ public class PotentialDAOImpl implements PotentialDAO {
 			return list;			
 		}
 	}
+
+	@Override
+	public List<Integer> selectCharNo() throws Exception {
+		try(
+			SqlSession session = new MybatisConfig().getSession();
+		){
+			List<Integer> list = session.selectList("dao.PotentialDAO.selectCharNo");
+			return list;
+		}
+	}
 	
 }

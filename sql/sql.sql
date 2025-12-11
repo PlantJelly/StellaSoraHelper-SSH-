@@ -127,6 +127,20 @@ drop table ssh_potential cascade constraints;
 select *
   from ssh_character;
   
+UPDATE ssh_potential
+   SET img_path = '/resources/images/potential/icons/' || char_no || '/pot_' || no || '.png';
+
+COMMIT;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 INSERT INTO ssh_character (no, name, img_path) VALUES (103, '코하쿠', '/resources/images/character/103.png');
 INSERT INTO ssh_character (no, name, img_path) VALUES (107, '틸리아', '/resources/images/character/107.png');
 INSERT INTO ssh_character (no, name, img_path) VALUES (108, '카시미라', '/resources/images/character/108.png');

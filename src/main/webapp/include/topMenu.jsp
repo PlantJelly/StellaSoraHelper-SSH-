@@ -11,7 +11,7 @@
         </div>
         <nav class="main-nav">
             <a href="${ pageContext.request.contextPath }/build/list.do">빌드목록</a>
-            <a href="${ pageContext.request.contextPath }/book/list.do">도감</a>
+            <a href="${ pageContext.request.contextPath }/potential/menu.do">도감</a>
             <c:choose>
                 <c:when test="${ not empty userVO }">
                     <a href="${ pageContext.request.contextPath }/member/mypage.do">마이페이지</a>
