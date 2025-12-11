@@ -24,5 +24,6 @@
     <mapper resource="mybatis/mapper/build.xml"/>
     <mapper resource="mybatis/mapper/member.xml"/>
     <mapper resource="mybatis/mapper/reply.xml"/>
+    <mapper resource="mybatis/mapper/recommend.xml"/>
   </mappers>
 </configuration>

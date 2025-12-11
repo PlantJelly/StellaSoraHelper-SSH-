@@ -28,7 +28,9 @@ public class LoginController implements Controller {
 			session.setAttribute("userVO", userVO);
 			url = "redirect:";
 		}else {
-			url = "redirect:/member/loginForm.do";
+			request.setAttribute("msg", "잘못된 아이디 혹은 비밀번호 입니다.");
+			request.setAttribute("url", request.getContextPath() + "/member/loginForm.do");
+			url = "/common/msg.jsp";
 		}
 		return url;
 	}

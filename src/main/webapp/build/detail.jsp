@@ -119,6 +119,31 @@
             }
         }
     }
+    
+    function recommend(userNo, buildNo){
+    	if(userNo == ""){
+    		alert("비회원은 추천하실 수 없습니다.")
+    		return
+    	}
+    	fetch('${ pageContext.request.contextPath }/recommend/check.do?userNo=' + userNo + '&buildNo=' + buildNo)
+    	.then(response => response.text())
+    	.then(data => {
+    		console.log(data)
+    		if(data.trim() == '1'){
+    			alert("이미 추천하신 빌드입니다.")
+    		}
+    		else if(data.trim() != '0'){
+    			alert("오류 발생")
+    		}else{
+    			fetch('${ pageContext.request.contextPath }/recommend/upRecommend.do?userNo=' + userNo + '&buildNo=' + buildNo)
+    			.then(response => {
+    				if(response.ok){
+		    			location.href="${ pageContext.request.contextPath }/build/detail.do?no=" + buildNo + "&page=${ param.page }"
+    				}
+    			})
+    		}
+    	})
+    }
 </script>
 </head>
 <body>
@@ -146,7 +171,11 @@
                 <p>${ buildDetail.content }</p>
             </div>
             <div class="detail-actions">
-                <button>추천</button>
+                <button onclick="recommend('${ userVO.no }', '${ buildDetail.no }')">
+                	<strong>${buildDetail.recommendCnt}</strong>
+                	<br>
+                	추천
+                </button>
             </div>
             <div class="reply-section">
                 <h4>댓글</h4>

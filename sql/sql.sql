@@ -116,6 +116,12 @@ select *
 select *
   from ssh_reply;
   
+select *
+  from ssh_build_recommend;
+  
+insert into ssh_build_recommend(build_no, user_no)
+values(61, 1);
+  
 drop table ssh_build_detail cascade constraints;
 
 drop table ssh_potential cascade constraints;

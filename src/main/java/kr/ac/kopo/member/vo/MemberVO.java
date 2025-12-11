@@ -9,6 +9,7 @@ public class MemberVO {
 	private String phoneNumber;
 	private String email;
 	private String regDate;
+	private String type;
 	
 	public MemberVO() {
 		super();
@@ -30,7 +31,7 @@ public class MemberVO {
 	}
 
 	public MemberVO(Integer no, String id, String password, String nickname, String phoneNumber, String email,
-			String regDate) {
+			String regDate, String type) {
 		super();
 		this.no = no;
 		this.id = id;
@@ -39,14 +40,11 @@ public class MemberVO {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.regDate = regDate;
+		this.type = type;
 	}
 
 	public Integer getNo() {
 		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
 	}
 
 	public String getId() {
@@ -97,10 +95,23 @@ public class MemberVO {
 		this.regDate = regDate;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setNo(Integer no) {
+		this.no = no;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [no=" + no + ", id=" + id + ", password=" + password + ", nickname=" + nickname
-				+ ", phoneNumber=" + phoneNumber + ", email=" + email + ", regDate=" + regDate + "]";
+				+ ", phoneNumber=" + phoneNumber + ", email=" + email + ", regDate=" + regDate + ", type=" + type + "]";
 	}
+
 	
 }

@@ -25,7 +25,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="MemberVO" parameterType="MemberVO">
-		select no, id, password, nickname, phone_number as phoneNumber, email, to_char(reg_date, 'YYYY-MM-DD') as regDate
+		select no, id, password, nickname, phone_number as phoneNumber, email, to_char(reg_date, 'YYYY-MM-DD') as regDate, type
 		  from ssh_member
 		 where id = #{id} and password = #{password}
 	</select>

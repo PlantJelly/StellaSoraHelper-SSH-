@@ -22,6 +22,9 @@
                     <a href="${ pageContext.request.contextPath }/member/loginForm.do">로그인</a>
                 </c:otherwise>
             </c:choose>
+            <c:if test="${ userVO.type eq 'ADMIN' }">
+            	<a href="${ pageContext.request.contextPath }/admin/menu.do">관리</a>
+            </c:if>
         </nav>
     </div>
     <div class="user-info">

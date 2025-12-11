@@ -299,6 +299,7 @@ button[type="reset"]:hover, button[type="button"]:hover {
 .header-left {
     display: flex;
     align-items: center;
+    margin-left: 5rem;
 }
 
 .top-menu-container .logo img {
