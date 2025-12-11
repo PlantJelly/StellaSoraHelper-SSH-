@@ -45,7 +45,7 @@
 	
 	<!-- 빌드 상세 조회 -->
 	<select id="selectDetail" parameterType="int" resultType="BuildVO">
-		select title, nickname, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt
+		select no, title, nickname, content, to_char(reg_date, 'yyyy-mm-dd/hh24:mi:ss') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt, user_no as userNo, password
 		  from ssh_build
 		 where no = #{no}
 	</select>

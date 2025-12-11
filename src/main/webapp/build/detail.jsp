@@ -16,8 +16,44 @@
 			let pageInt = Number("${page}")
 			if (isNaN(pageInt)){
 				location.href = "${ pageContext.request.contextPath }/member/mypage.do?tab=${ page }"
-			}else{
+			}else if(typeof(pageInt) == "int"){
 				location.href = "${ pageContext.request.contextPath }/build/list.do?page=${ page }"
+			}else{
+				location.href = "${ pageContext.request.contextPath }/build/list.do"
+			}
+		})
+		let editBtn = document.querySelector("#editBtn")
+		editBtn.addEventListener('click', () => {
+			if("${ empty userVO }" == "true"){
+				let password = prompt("게시글 비밀번호를 입력하세요.")
+				if(password == "${ buildDetail.password }"){
+					location.href = "${ pageContext.request.contextPath }/build/editForm.do?no=${ buildDetail.no }"
+				}else{
+					alert("잘못된 비밀번호입니다.")
+				}
+			}else if("${ empty buildDetail.password }" == "true"){
+				location.href = "${ pageContext.request.contextPath }/build/editForm.do?no=${ buildDetail.no }"				
+			}else{
+				alert("로그인상태에서 비회원 글은 수정할 수 없습니다.")
+			}
+		})
+		let delBtn = document.querySelector("#delBtn")
+		delBtn.addEventListener('click', () => {
+			if("${ empty userVO }" == "true"){
+				let password = prompt("게시글 비밀번호를 입력하세요.")
+				if(password == "${ buildDetail.password }"){
+					if(confirm("삭제하시겠습니까?")){						
+						location.href = "${ pageContext.request.contextPath }/build/delete.do?no=${ buildDetail.no }"
+					}
+				}else{
+					alert("잘못된 비밀번호입니다.")
+				}
+			}else if("${ empty buildDetail.password }" == "true"){
+				if(confirm("삭제하시겠습니까?")){
+					location.href = "${ pageContext.request.contextPath }/build/delete.do?no=${ buildDetail.no }"	
+				}
+			}else{
+				alert("로그인상태에서 비회원 글은 삭제할 수 없습니다.")
 			}
 		})
 	}
@@ -34,7 +70,10 @@
 				<div class="detail-meta">
 					<span>닉네임 : ${ buildDetail.nickname }</span> | <span>작성일 : ${ buildDetail.regDate }</span>
 				</div>
-				<button id="editBtn">수정</button> <!-- Move button here -->
+				<div class="detail-header-buttons">
+					<button id="editBtn">수정</button>
+					<button id="delBtn">삭제</button>
+				</div>
 			</div>
 			<div class="detail-meta-counts">
 				<span>조회수 : ${ buildDetail.viewCnt }</span> | <span>추천수 : ${ buildDetail.recommendCnt }</span>

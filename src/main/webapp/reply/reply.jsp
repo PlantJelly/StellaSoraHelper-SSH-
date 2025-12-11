@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div>
+<div class="reply-form-container">
 	<form action="${ pageContext.request.contextPath }/reply/write.do" method="post" name="writeForm">
 		<table border="1">
 			<tr>
@@ -26,18 +26,15 @@
 					</tr>	
 				</c:if>
 			</tr>
-			<tr>
-				<th width="25%">내용</th>
-				<td>
-					<textarea rows="8" cols="100" name="content" required="required"></textarea>
-					<input type="hidden" name="buildNo" value="${ param.no }">
-					<input type="hidden" name="page" value="${ param.page }">
-				</td>
-			</tr>
 		</table>
-		<div align="right">
-		<button type="submit">등록</button>
-		<button type="reset">초기화</button>
+		<div class="reply-textarea-wrapper">
+			<textarea rows="8" cols="100" name="content" required="required"></textarea>
+			<input type="hidden" name="buildNo" value="${ param.no }">
+			<input type="hidden" name="page" value="${ param.page }">
+		</div>
+		<div class="reply-form-buttons">
+			<button type="submit">등록</button>
+			<button type="reset">초기화</button>
 		</div>
 	</form>
 </div>

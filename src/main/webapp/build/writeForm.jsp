@@ -25,46 +25,50 @@
 	<section>
 		<div class="container" id="content">
 		<h2>빌드 등록</h2>
-		<form action="${ pageContext.request.contextPath }/build/write.do" method="post" name="writeForm" class="form-centered">
+		<form action="${ pageContext.request.contextPath }/build/${ empty buildVO ? 'write.do' : 'edit.do' }" method="post" name="writeForm" class="form-centered">
 			<table>
 				<tr>
 					<th>제목</th>
 					<td>
-						<input type="text" name="title" required="required">
+						<input type="text" name="title" required="required" value="${ buildVO.title }">
+						<c:if test="${ not empty buildVO }">
+							<input type="hidden" name="buildNo" value="${ buildVO.no }">
+						</c:if>
 					</td>
 				</tr>
-				<tr>
-					<c:if test="${ not empty userVO }">
-						
-					<th>닉네임</th>
-					<td>
-						${ userVO.nickname }
-						<input type="hidden" name="nickname" value="${ userVO.nickname }">
-						<input type="hidden" name="userNo" value="${ userVO.no }">
-					</td>
-					</c:if>
-					<c:if test="${ empty userVO }">
-					<th>닉네임</th>
-					<td>
-						<input type="text" name="nickname" required="required">
-					</td>
-						<tr>
-							<th>비밀번호</th>
-							<td>
-								<input type="password" name="password" required="required">
-							</td>
-						</tr>	
-					</c:if>
-				</tr>
+				<c:if test="${ empty buildVO }">
+					<tr>
+						<c:if test="${ not empty userVO }">	
+						<th>닉네임</th>
+						<td>
+							${ userVO.nickname }
+							<input type="hidden" name="nickname" value="${ userVO.nickname }">
+							<input type="hidden" name="userNo" value="${ userVO.no }">
+						</td>
+						</c:if>
+						<c:if test="${ empty userVO }">
+						<th>닉네임</th>
+						<td>
+							<input type="text" name="nickname" required="required" value="${ buildVO.nickname }">
+						</td>
+							<tr>
+								<th>비밀번호</th>
+								<td>
+									<input type="password" name="password" required="required">
+								</td>
+							</tr>	
+						</c:if>
+					</tr>
+				</c:if>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea rows="15" name="content" required="required"></textarea>
+						<textarea rows="15" name="content" required="required">${ buildVO.content }</textarea>
 					</td>
 				</tr>
 			</table>
 			<div class="form-actions">
-				<button type="submit">등록</button>
+				<button type="submit">${ not empty buildVO ? '수정' : '등록' }</button>
 				<button type="reset">초기화</button>
 				<button type="button" id="cancelBtn">취소</button>
 			</div>
