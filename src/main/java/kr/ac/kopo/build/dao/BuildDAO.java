@@ -9,7 +9,11 @@ public interface BuildDAO {
 
 	List<BuildVO> selectAllBuild(int page) throws Exception;
 	
+	List<BuildVO> selectAllBuildBy(Map map) throws Exception;
+	
 	List<BuildVO> selectBuildByTitle(Map map) throws Exception;
+	
+	List<BuildVO> selectBuildByNickname(Map map) throws Exception;
 	
 	List<BuildVO> selectMyBuild(int no) throws Exception;
 	

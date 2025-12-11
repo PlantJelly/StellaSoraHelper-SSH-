@@ -15,11 +15,25 @@ public interface BuildService {
 	List<BuildVO> selectAllBuild(int page) throws Exception;
 	
 	/**
+	 * 전체 빌드 조회 + 조건(제목, 닉네임) + 정렬(최신순, 조회순, 추천순)
+	 * @param searchType(title, nickname) inputData(입력값) orderType(no, view_cnt, recommend_cnt) page Map
+	 * @return 빌드 배열(BuildVO형)
+	 */
+	List<BuildVO> selectAllBuildBy(Map map) throws Exception;
+	
+	/**
 	 * 빌드 제목 검색
 	 * @param title, page Map
 	 * @return 빌드 배열(BuildVO형)
 	 */
 	List<BuildVO> selectBuildByTitle(Map map) throws Exception;
+	
+	/**
+	 * 빌드 닉네임 검색
+	 * @param nickname, page map
+	 * @return 빌드 배열(BuildVO형)
+	 */
+	List<BuildVO> selectBuildByNickname(Map map) throws Exception;
 	
 	/**
 	 * 내 빌드 검색

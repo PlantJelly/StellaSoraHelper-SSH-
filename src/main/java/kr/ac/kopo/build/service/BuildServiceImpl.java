@@ -22,8 +22,20 @@ public class BuildServiceImpl implements BuildService {
 	}
 
 	@Override
+	public List<BuildVO> selectAllBuildBy(Map map) throws Exception {
+		List<BuildVO> list = buildDao.selectAllBuildBy(map);
+		return list;
+	}
+
+	@Override
 	public List<BuildVO> selectBuildByTitle(Map map) throws Exception {
 		List<BuildVO> list = buildDao.selectBuildByTitle(map);
+		return list;
+	}
+
+	@Override
+	public List<BuildVO> selectBuildByNickname(Map map) throws Exception {
+		List<BuildVO> list = buildDao.selectBuildByNickname(map);
 		return list;
 	}
 

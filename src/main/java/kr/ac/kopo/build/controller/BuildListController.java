@@ -1,6 +1,8 @@
 package kr.ac.kopo.build.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,12 +24,23 @@ public class BuildListController implements Controller {
 		String param = request.getParameter("page");
 		int page;
 		List<BuildVO> list;
-		if(param == null) {
+		if(param == null || param.equals("")) {
 			page = 1;
 		}else {
 			page = Integer.parseInt(param);
 		}
-		list = buildService.selectAllBuild(page);
+		String searchType = request.getParameter("searchType");
+		String inputData = request.getParameter("inputData");
+		String orderType = request.getParameter("orderType");
+		if(orderType == null || orderType.equals("")) {
+			orderType = "no";
+		}
+		Map map = new HashMap();
+		map.put("searchType", searchType);
+		map.put("inputData", inputData);
+		map.put("orderType", orderType);
+		map.put("page", page);
+		list = buildService.selectAllBuildBy(map);
 		int startPage = (int) ((page - 1)/10) * 10 + 1;
 		int endPage = (int) ((page - 1)/10 + 1) * 10;
 		int lastPage = (int) buildService.countBuild() / 10 + 1;

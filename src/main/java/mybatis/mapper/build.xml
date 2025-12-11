@@ -16,6 +16,28 @@
 		values(seq_ssh_build_no.nextval, #{title}, #{userNo, jdbcType=NUMERIC}, #{nickname}, #{password, jdbcType=VARCHAR}, #{content})
 	</insert>
 	
+	<!-- 전체 빌드 조회 + 조건(제목, 닉네임) -->
+	<select id="selectAllBuildBy" parameterType="Map" resultType="BuildVO">
+		select *
+		  from (
+		  <include refid="selectBuild" />
+		  <where>
+		  	<if test="inputData != null and inputData != ''">
+            <choose>
+                <when test="searchType == 'title'">
+                    AND title like '%${inputData}%'
+                </when>
+                <when test="searchType == 'nickname'">
+                    AND nickname like '%${inputData}%'
+                </when>
+            </choose>
+        </if>
+		  </where>
+		  order by ${orderType} desc
+		  )
+		  <include refid="pageSelect" />
+	</select>
+	
 	<!-- 전체빌드 조회 -->
 	<select id="selectAllBuild" parameterType="int" resultType="BuildVO">
 		select *
@@ -32,6 +54,17 @@
 		  from (
 				<include refid="selectBuild" />
 				 where title like '%${title}%'
+				 order by no desc
+		       )
+		 <include refid="pageSelect" />
+	</select>
+
+	<!-- 빌드 조회(제목) -->
+	<select id="selectBuildByNickname" parameterType="map" resultType="BuildVO">
+		select *
+		  from (
+				<include refid="selectBuild" />
+				 where title like '%${nickname}%'
 				 order by no desc
 		       )
 		 <include refid="pageSelect" />

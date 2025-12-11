@@ -19,6 +19,15 @@ public class BuildDAOImpl implements BuildDAO {
 			return list;
 		}
 	}
+	
+	public List<BuildVO> selectAllBuildBy(Map map) throws Exception {
+		try(
+			SqlSession session = new MybatisConfig().getSession();
+		) {
+			List<BuildVO> list = session.selectList("dao.BuildDAO.selectAllBuildBy", map);
+			return list;
+		}
+	}
 
 	@Override
 	public List<BuildVO> selectBuildByTitle(Map map) throws Exception {
@@ -29,8 +38,17 @@ public class BuildDAOImpl implements BuildDAO {
 			return list;
 		}
 	}
-
 	
+	@Override
+	public List<BuildVO> selectBuildByNickname(Map map) throws Exception {
+		try (
+			SqlSession session = new MybatisConfig().getSession();
+		){
+			List<BuildVO> list = session.selectList("dao.BuildDAO.selectBuildByNickname", map);
+			return list;
+		} 
+	}
+
 	@Override
 	public List<BuildVO> selectMyBuild(int no) throws Exception {
 		try(

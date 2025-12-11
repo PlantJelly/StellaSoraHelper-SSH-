@@ -10,38 +10,38 @@
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
 <script>
-const showTab = (tabId) => {
-    let tabContents = document.getElementsByClassName("tabContent")
-    for(let i = 0; i < tabContents.length; i++){
-        tabContents[i].style.display = "none"
-    }
-    document.getElementById(tabId).style.display = "block"
-}
-
-const openTab = (tabId) => {
-    showTab(tabId)
-    
-    const url = new URL(window.location.href);
-    url.searchParams.set("tab", tabId)
-    window.history.pushState({}, "", url)
-}
-
-window.onload = () => {
-    let openTab = "${param.tab}"
-    if(openTab) showTab(openTab)
-    else showTab("detail")
-}
-
-window.onpopstate = (event) => {
-    const url = new URL(window.location.href)
-    const tabId = url.searchParams.get('tab')
-    if(tabId) {
-    	showTab(tabId)
-    	}
-    else{
-    	showTab("detail")
-    }
-}
+	let showTab = (tabId) => {
+	    let tabContents = document.getElementsByClassName("tabContent")
+	    for(let i = 0; i < tabContents.length; i++){
+	        tabContents[i].style.display = "none"
+	    }
+	    document.getElementById(tabId).style.display = "block"
+	}
+	
+	let openTab = (tabId) => {
+	    showTab(tabId)
+	    
+	    const url = new URL(window.location.href);
+	    url.searchParams.set("tab", tabId)
+	    window.history.pushState({}, "", url)
+	}
+	
+	window.onload = () => {
+	    let openTab = "${param.tab}"
+	    if(openTab) showTab(openTab)
+	    else showTab("detail")
+	}
+	
+	window.onpopstate = (event) => {
+	    const url = new URL(window.location.href)
+	    const tabId = url.searchParams.get('tab')
+	    if(tabId) {
+	    	showTab(tabId)
+	    	}
+	    else{
+	    	showTab("detail")
+	    }
+	}
 </script>
 </head>
 <body>

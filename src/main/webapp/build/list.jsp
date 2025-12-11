@@ -16,6 +16,12 @@
 			location.href = "${ pageContext.request.contextPath }/build/writeForm.do"
 		})
 	}
+	function sortBuild(value){
+        let searchType = "${param.searchType}";
+        let inputData = "${param.inputData}";
+        
+        location.href = "${pageContext.request.contextPath}/build/list.do?page=1" + "&orderType=" + value + "&searchType=" + searchType + "&inputData=" + inputData;
+	}
 </script>
 </head>
 <body>
@@ -25,6 +31,11 @@
 	<section>
 		<div class="container">
 		<h2>전체빌드 조회</h2>
+		<select name="orderType" onchange="sortBuild(this.value)" >
+			<option value="no" ${ param.orderType eq 'no' ? 'selected' : '' }>최신순</option>
+			<option value="view_cnt" ${ param.orderType eq 'view_cnt' ? 'selected' : '' }>조회순</option>
+			<option value="recommend_cnt" ${ param.orderType eq 'recommend_cnt' ? 'selected' : '' }>추천순</option>
+		</select>
 		<table class="data-table">
 			<tr>
 				<th width="6%">번호</th>
@@ -52,6 +63,16 @@
 		<div class="button-container-right">
 			<button id="addBtn">새글등록</button>
 		</div>
+		<div class="search-container-center">
+			<form action="list.do" method="get">
+				<select name="searchType">
+					<option value="title" ${ param.searchType eq 'title' ? 'selected' : '' }>제목</option>	
+					<option value="nickname" ${ param.searchType eq 'nickname' ? 'selected' : '' }>닉네임</option>	
+				</select>
+				<input type="text" placeholder="검색어 입력" name="inputData" value="${ param.inputData }">
+				<button onclick="searchBuild">검색</button>
+			</form>
+		</div>
 		<div class="pagination">
 		    <c:if test="${startPage > 10}">
 		        <a href="list.do?page=${startPage - 1}">[이전]</a>
@@ -62,7 +83,7 @@
 		                <strong>${i}</strong>
 		            </c:when>
 		            <c:otherwise>
-		                <a href="list.do?page=${i}">${i}</a>
+		                <a href="list.do?page=${i}&searchType=${ param.searchType }&inputData=${ param.inputData }&orderType=${ param.orderType }">${i}</a>
 		            </c:otherwise>
 		        </c:choose>
 		    </c:forEach>
@@ -70,7 +91,7 @@
 		        <a href="list.do?page=${endPage + 1}">[다음]</a>
 		    </c:if>
 		</div>
-	</div>
+		</div>
 	</section>
 	<footer>
 		<%@ include file="/include/footer.jsp" %>
