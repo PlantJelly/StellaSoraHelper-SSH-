@@ -32,4 +32,42 @@ public class ReplyDAOImpl implements ReplyDAO {
 		}
 		
 	}
+
+	@Override
+	public ReplyVO selectReplyByNo(int replyNo) throws Exception {
+		try(
+			SqlSession session = new MybatisConfig().getSession();
+		) {
+			ReplyVO reply = session.selectOne("dao.ReplyDAO.selectReplyByNo", replyNo);
+			return reply;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteReply(int replyNo) throws Exception {
+		try(
+			SqlSession session = new MybatisConfig().getSession();
+		){
+			session.delete("dao.ReplyDAO.deleteReply", replyNo);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateReply(ReplyVO reply) throws Exception {
+		try(
+			SqlSession session = new MybatisConfig().getSession();
+		) {
+			session.update("dao.ReplyDAO.updateReply", reply);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

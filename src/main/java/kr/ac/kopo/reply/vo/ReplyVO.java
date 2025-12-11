@@ -2,7 +2,7 @@ package kr.ac.kopo.reply.vo;
 
 public class ReplyVO {
 	
-	private String no;
+	private Integer no;
 	private String content;
 	private Integer userNo;
 	private String nickname;
@@ -23,7 +23,7 @@ public class ReplyVO {
 		this.buildNo = buildNo;
 	}
 
-	public ReplyVO(String no, String content, Integer userNo, String nickname, String password, String regDate,
+	public ReplyVO(Integer no, String content, Integer userNo, String nickname, String password, String regDate,
 			Integer buildNo) {
 		super();
 		this.no = no;
@@ -35,11 +35,11 @@ public class ReplyVO {
 		this.buildNo = buildNo;
 	}
 
-	public String getNo() {
+	public Integer getNo() {
 		return no;
 	}
 
-	public void setNo(String no) {
+	public void setNo(Integer no) {
 		this.no = no;
 	}
 

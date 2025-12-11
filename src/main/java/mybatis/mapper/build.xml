@@ -41,6 +41,7 @@
 	<select id="selectMyBuild" parameterType="int" resultType="BuildVO">
 		<include refid="selectBuild" />
 		 where user_no = #{no}
+		 order by no desc
 	</select>
 	
 	<!-- 빌드 상세 조회 -->

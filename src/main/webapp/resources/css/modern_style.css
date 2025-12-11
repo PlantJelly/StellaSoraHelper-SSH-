@@ -89,7 +89,7 @@ table.data-table tr:hover {
 
 form table {
     border: none;
-    margin: 0; 
+    /* The centering is now handled by the .form-centered class on the form tag */
 }
 form table th {
     background-color: transparent;
@@ -108,6 +108,11 @@ form table tr:hover {
 }
 form table, form th, form td {
     border: none;
+}
+
+.form-centered > table {
+    width: auto;
+    margin: 0 auto;
 }
 
 input[type="text"],
@@ -368,6 +373,7 @@ button[type="reset"]:hover, button[type="button"]:hover {
 .reply-form-container table {
 	width: auto;
 	margin-bottom: 1rem;
+	margin: 0; /* Keep reply table left-aligned */
 }
 
 .reply-textarea-wrapper {

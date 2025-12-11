@@ -8,6 +8,7 @@
 		select no, content, user_no as userNo, nickname, password, to_char(reg_date, 'yyyy-mm-dd/hh24:mi:ss') as regDate, build_no as buildNo
 		  from ssh_reply
 		 where build_no = #{buildNo}
+		 order by no desc
 	</select>
 	
 	<!-- 댓글 등록 -->
@@ -15,4 +16,25 @@
 		insert into ssh_reply(no, content, user_no, nickname, password, build_no)
 		values(seq_ssh_reply_no.nextval, #{content}, #{userNo, jdbcType=NUMERIC}, #{nickname}, #{password, jdbcType=VARCHAR}, #{buildNo})
 	</insert>
+	
+	<!-- 댓글 조회 -->
+	<select id="selectReplyByNo" parameterType="int" resultType="ReplyVO">
+		select no, content, user_no as userNO, nickname, password, to_char(reg_date, 'yyyy-mm-dd/hh24:mi:ss') as regDate, build_no as buildNo
+		  from ssh_reply
+		 where no = #{no}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="int">
+		delete 
+		  from ssh_reply
+		 where no = #{replyNo}
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="ReplyVO">
+		update ssh_reply
+		   set content = #{content}
+		 where no = #{no}
+	</update>
 </mapper>

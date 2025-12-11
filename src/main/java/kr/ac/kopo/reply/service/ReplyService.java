@@ -10,4 +10,9 @@ public interface ReplyService {
 	
 	public void insertReply(ReplyVO reply) throws Exception;
 
+	public ReplyVO selectReplyByNo(int replyNo) throws Exception;
+	
+	public void deleteReply(int replyNo) throws Exception;
+	
+	public void updateReply(ReplyVO reply) throws Exception;
 }
