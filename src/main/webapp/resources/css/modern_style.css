@@ -399,3 +399,71 @@ button[type="reset"]:hover, button[type="button"]:hover {
     padding: 5px 10px;
     font-size: 0.9rem;
 }
+
+/* List page specific styles */
+.list-controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-container-center {
+    margin-top: 1.5rem;
+}
+
+.search-container-center form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* A generic class for styled select boxes */
+.form-select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    height: 38px; /* Match input height */
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.search-button {
+    padding: 8px 20px;
+    height: 38px;
+    background-color: #6c757d; /* Gray color */
+    color: white;
+    border-color: #6c757d; /* Restored border color */
+}
+.search-button:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
+
+/* Sizing for orderType select */
+.order-select {
+    width: 120px; /* Reduced width */
+    font-size: 1.0rem;
+    padding: 8px 12px;
+    height: 42px; /* A bit larger */
+}
+
+/* Sizing for search elements */
+.search-select {
+    width: 100px; /* Reduced width */
+}

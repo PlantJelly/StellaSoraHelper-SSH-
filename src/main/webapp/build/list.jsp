@@ -31,11 +31,13 @@
 	<section>
 		<div class="container">
 		<h2>전체빌드 조회</h2>
-		<select name="orderType" onchange="sortBuild(this.value)" >
-			<option value="no" ${ param.orderType eq 'no' ? 'selected' : '' }>최신순</option>
-			<option value="view_cnt" ${ param.orderType eq 'view_cnt' ? 'selected' : '' }>조회순</option>
-			<option value="recommend_cnt" ${ param.orderType eq 'recommend_cnt' ? 'selected' : '' }>추천순</option>
-		</select>
+		<div class="list-controls">
+			<select name="orderType" onchange="sortBuild(this.value)" class="form-select order-select">
+				<option value="no" ${ param.orderType eq 'no' ? 'selected' : '' }>최신순</option>
+				<option value="view_cnt" ${ param.orderType eq 'view_cnt' ? 'selected' : '' }>조회순</option>
+				<option value="recommend_cnt" ${ param.orderType eq 'recommend_cnt' ? 'selected' : '' }>추천순</option>
+			</select>
+		</div>
 		<table class="data-table">
 			<tr>
 				<th width="6%">번호</th>
@@ -65,12 +67,12 @@
 		</div>
 		<div class="search-container-center">
 			<form action="list.do" method="get">
-				<select name="searchType">
+				<select name="searchType" class="form-select search-select">
 					<option value="title" ${ param.searchType eq 'title' ? 'selected' : '' }>제목</option>	
 					<option value="nickname" ${ param.searchType eq 'nickname' ? 'selected' : '' }>닉네임</option>	
 				</select>
-				<input type="text" placeholder="검색어 입력" name="inputData" value="${ param.inputData }">
-				<button onclick="searchBuild">검색</button>
+				<input type="text" placeholder="검색어 입력" name="inputData" value="${ param.inputData }" class="search-input">
+				<button type="submit" class="search-button">검색</button>
 			</form>
 		</div>
 		<div class="pagination">

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PotentialDAO">
+	<!-- 잠재능력 조회 -->
+	<select id="selectPotential" parameterType="int" resultType="PotentialVO">
+		select no, char_no as charNo, name, rank, type, img_path as imgPath
+		  from ssh_potential
+		 where char_no = #{charNo}
+		 order by case when rank = 'gold' then 3
+		               when rank = 'rainbow' then 2
+		               when rank = 'pink' then 1 end
+	</select>
+	
+	<!-- 캐릭터 번호 조회 -->
+	<select id="selectCharNo" resultType="int">
+		select distinct char_no as charNo
+		  from ssh_potential
+	</select>
+</mapper>
