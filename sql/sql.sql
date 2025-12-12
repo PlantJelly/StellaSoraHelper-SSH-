@@ -143,13 +143,8 @@ truncate table ssh_reply;
 alter sequence seq_ssh_build_no restart start with 1;
 
 alter sequence seq_ssh_reply_no restart start with 1;
-  
-  
-  
-  
-  
-  
-  
+ 
+
   
 INSERT INTO ssh_character (no, name, img_path) VALUES (103, '코하쿠', '/resources/images/character/103.png');
 INSERT INTO ssh_character (no, name, img_path) VALUES (107, '틸리아', '/resources/images/character/107.png');

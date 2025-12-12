@@ -90,10 +90,7 @@
 	<!-- 글 개수 조회 -->
 	<select id="countBuild" resultType="int" parameterType="Map">
 		select count(*)
-		  from (
-		select no, title, nickname, regDate, viewCnt, recommendCnt, rownum as rNum
-		  from (
-			  <include refid="selectBuild" />
+		  from ssh_build
 			  <where>
 			  	<if test="inputData != null and inputData != ''">
 	            <choose>
@@ -106,10 +103,6 @@
 	            </choose>
 	       		</if>
 			  </where>
-			  order by ${orderType} desc
-			  )
-		  )
-		  <include refid="pageSelect" />
 	</select>
 	
 	<!-- 빌드 삭제 -->
