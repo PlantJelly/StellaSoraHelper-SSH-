@@ -10,10 +10,6 @@
 		<td>${ userVO.id }</td>
 	</tr>
 	<tr>
-		<th>비밀번호</th>
-		<td>${ userVO.password }</td>
-	</tr>
-	<tr>
 		<th>닉네임</th>
 		<td>${ userVO.nickname }</td>
 	</tr>
