@@ -54,7 +54,7 @@ public interface BuildService {
 	 * @return 글 개수
 	 * @throws Exception
 	 */
-	int countBuild() throws Exception;
+	int countBuild(Map map) throws Exception;
 
 	/**
 	 * 빌드 작성

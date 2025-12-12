@@ -88,9 +88,28 @@
 	</select>
 	
 	<!-- 글 개수 조회 -->
-	<select id="countBuild" resultType="int">
+	<select id="countBuild" resultType="int" parameterType="Map">
 		select count(*)
-		  from ssh_build
+		  from (
+		select no, title, nickname, regDate, viewCnt, recommendCnt, rownum as rNum
+		  from (
+			  <include refid="selectBuild" />
+			  <where>
+			  	<if test="inputData != null and inputData != ''">
+	            <choose>
+	                <when test="searchType == 'title'">
+	                    AND title like '%${inputData}%'
+	                </when>
+	                <when test="searchType == 'nickname'">
+	                    AND nickname like '%${inputData}%'
+	                </when>
+	            </choose>
+	       		</if>
+			  </where>
+			  order by ${orderType} desc
+			  )
+		  )
+		  <include refid="pageSelect" />
 	</select>
 	
 	<!-- 빌드 삭제 -->

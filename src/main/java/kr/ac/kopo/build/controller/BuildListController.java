@@ -43,7 +43,7 @@ public class BuildListController implements Controller {
 		list = buildService.selectAllBuildBy(map);
 		int startPage = (int) ((page - 1)/10) * 10 + 1;
 		int endPage = (int) ((page - 1)/10 + 1) * 10;
-		int lastPage = (int) buildService.countBuild() / 10 + 1;
+		int lastPage = (int) buildService.countBuild(map) / 10 + 1;
 		if(lastPage < endPage) {
 			endPage = lastPage;
 		}

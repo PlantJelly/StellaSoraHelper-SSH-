@@ -53,8 +53,8 @@ public class BuildServiceImpl implements BuildService {
 	}
 
 	@Override
-	public int countBuild() throws Exception {
-		int no = buildDao.countBuild();
+	public int countBuild(Map map) throws Exception {
+		int no = buildDao.countBuild(map);
 		return no;
 	}
 

@@ -19,7 +19,7 @@ public interface BuildDAO {
 	
 	BuildVO selectDetail(int buildNo) throws Exception;
 	
-	int countBuild() throws Exception;
+	int countBuild(Map map) throws Exception;
 
 	void insertBuild(BuildVO build) throws Exception;
 	

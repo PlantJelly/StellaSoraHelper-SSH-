@@ -70,11 +70,11 @@ public class BuildDAOImpl implements BuildDAO {
 	}
 
 	@Override
-	public int countBuild() throws Exception {
+	public int countBuild(Map map) throws Exception {
 		try(
 				SqlSession session = new MybatisConfig().getSession();
 		){
-			int no = session.selectOne("dao.BuildDAO.countBuild");
+			int no = session.selectOne("dao.BuildDAO.countBuild", map);
 			return no;
 		}
 	}

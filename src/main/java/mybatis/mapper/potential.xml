@@ -8,9 +8,9 @@
 		select no, char_no as charNo, name, rank, type, img_path as imgPath
 		  from ssh_potential
 		 where char_no = #{charNo}
-		 order by case when rank = 'gold' then 3
-		               when rank = 'rainbow' then 2
-		               when rank = 'pink' then 1 end
+		 order by case when rank = 'GOLD' then 3
+		               when rank = 'RAINBOW' then 2
+		               when rank = 'PINK' then 1 end
 	</select>
 	
 	<!-- 캐릭터 번호 조회 -->
