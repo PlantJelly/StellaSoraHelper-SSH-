@@ -34,8 +34,8 @@
 		<div class="list-controls">
 			<select name="orderType" onchange="sortBuild(this.value)" class="form-select order-select">
 				<option value="no" ${ param.orderType eq 'no' ? 'selected' : '' }>최신순</option>
-				<option value="view_cnt" ${ param.orderType eq 'view_cnt' ? 'selected' : '' }>조회순</option>
-				<option value="recommend_cnt" ${ param.orderType eq 'recommend_cnt' ? 'selected' : '' }>추천순</option>
+				<option value="viewCnt" ${ param.orderType eq 'view_cnt' ? 'selected' : '' }>조회순</option>
+				<option value="recommendCnt" ${ param.orderType eq 'recommend_cnt' ? 'selected' : '' }>추천순</option>
 			</select>
 		</div>
 		<table class="data-table">

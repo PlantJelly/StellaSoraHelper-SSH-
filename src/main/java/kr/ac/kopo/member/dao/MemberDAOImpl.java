@@ -54,5 +54,15 @@ public class MemberDAOImpl implements MemberDAO {
 			session.commit();
 			}
 	}
+
+	@Override
+	public void delete(int userNo) throws Exception {
+		try(
+			SqlSession session = new MybatisConfig().getSession();
+		){
+			session.delete("dao.MemberDAO.delete", userNo);
+			session.commit();
+		}
+	}
 	
 }

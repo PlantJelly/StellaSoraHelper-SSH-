@@ -9,4 +9,6 @@ public interface MemberDAO {
 	public MemberVO login(MemberVO loginUser) throws Exception;
 	
 	public void register(MemberVO user) throws Exception;
+	
+	public void delete(int userNo) throws Exception;
 }

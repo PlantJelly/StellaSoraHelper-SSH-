@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SSH : Book Detail</title>
+<title>SSH : Book Detail ${ character.name }</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/layout.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myStyle.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/modern_style.css">
@@ -14,7 +14,6 @@
     .character-header {
         text-align: center;
         padding: 20px;
-        background: #1f1f1f;
         border-bottom: 2px solid #444;
     }
     .character-header img {
@@ -27,7 +26,7 @@
     .character-header p {
         font-size: 24px;
         font-weight: bold;
-        color: #eee;
+        color: #333; /* 검은 계열 */
         margin: 0;
     }
 
@@ -43,21 +42,22 @@
     /* 개별 잠재능력 카드 */
     .pot-card {
         display: flex; /* 내부 아이템을 flex로 관리 */
-        align-items: center; /* 세로 중앙 정렬 */
+        flex-direction: column; /* 세로 정렬 */
+        align-items: center; /* 가로 중앙 정렬 */
         background: #2a2a2a;
         border-radius: 8px;
         padding: 15px;
         color: white;
         box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-        width: 300px; /* 카드 가로 너비 고정 */
+        width: 150px; /* 카드 가로 너비 조정 */
     }
     
     /* 이미지 겹치기 영역 */
     .image-wrapper {
         position: relative;
-        width: 70px;  /* 이미지 컨테이너 크기 축소 */
-        height: 70px;
-        margin-right: 15px; /* 이미지와 텍스트 사이 간격 */
+        width: 100px;  /* 이미지 컨테이너 크기 증가 */
+        height: 100px;
+        margin-bottom: 10px; /* 이미지와 텍스트 사이 간격 */
         flex-shrink: 0; /* 컨테이너 크기 유지 */
     }
     
@@ -66,25 +66,27 @@
         position: absolute;
         top: 0; left: 0;
         width: 100%;
-        height: 100%;
+        height: 110%; /* 배경 이미지를 조금 더 길게 */
         z-index: 1;
+        object-fit: contain;
     }
     
     /* 2. 아이콘 (스킬 그림) */
     .icon-img {
         position: absolute;
-        top: 10%; left: 10%;
+        top: 5%; /* 아이콘을 조금 아래로 이동하여 배경이 위로 보이도록 */
+        left: 10%;
         width: 80%;
-        height: 80%;
+        height: 90%; /* 아이콘 높이 조정 */
         z-index: 2;
         object-fit: contain;
     }
 
     /* 잠재능력 이름 */
     .pot-name {
-        font-size: 16px;
+        font-size: 18px; /* 폰트 크기 증가 */
         font-weight: bold;
-        text-align: left;
+        text-align: center; /* 이름 중앙 정렬 */
     }
 </style>
 </head>

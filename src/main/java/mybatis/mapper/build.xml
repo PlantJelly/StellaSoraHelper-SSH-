@@ -4,8 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.BuildDAO">
 	<sql id="selectBuild">
-		select no, title, nickname, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt, rownum as rNum
-		  from ssh_build
+		select no, title, nickname, to_char(reg_date, 'yyyy-mm-dd') as regDate, view_cnt as viewCnt, recommend_cnt as recommendCnt
+				  from ssh_build
 	</sql>
 	<sql id="pageSelect">
 		where rNum between (#{page} - 1) * 10 + 1 and #{page} * 10
@@ -20,20 +20,23 @@
 	<select id="selectAllBuildBy" parameterType="Map" resultType="BuildVO">
 		select *
 		  from (
-		  <include refid="selectBuild" />
-		  <where>
-		  	<if test="inputData != null and inputData != ''">
-            <choose>
-                <when test="searchType == 'title'">
-                    AND title like '%${inputData}%'
-                </when>
-                <when test="searchType == 'nickname'">
-                    AND nickname like '%${inputData}%'
-                </when>
-            </choose>
-        </if>
-		  </where>
-		  order by ${orderType} desc
+		select no, title, nickname, regDate, viewCnt, recommendCnt, rownum as rNum
+		  from (
+			  <include refid="selectBuild" />
+			  <where>
+			  	<if test="inputData != null and inputData != ''">
+	            <choose>
+	                <when test="searchType == 'title'">
+	                    AND title like '%${inputData}%'
+	                </when>
+	                <when test="searchType == 'nickname'">
+	                    AND nickname like '%${inputData}%'
+	                </when>
+	            </choose>
+	       		</if>
+			  </where>
+			  order by ${orderType} desc
+			  )
 		  )
 		  <include refid="pageSelect" />
 	</select>

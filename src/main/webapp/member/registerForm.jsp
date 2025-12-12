@@ -92,6 +92,14 @@
 		location.href="${ pageContext.request.contextPath }"
 	}
 </script>
+<style>
+    .required-msg {
+        text-align: center;
+        color: red;
+        font-size: 0.85em; /* 현재 폰트보다 살짝 작게 */
+        margin-top: 10px; /* 위쪽 여백 추가 */
+    }
+</style>
 </head>
 <body>
 	<header>
@@ -135,6 +143,7 @@
 					</td>
 				</tr>
 			</table>
+			<p class="required-msg">*은 필수항목입니다.</p>
 			<div class="form-actions">
 				<button type="submit" id="submitBtn">가입</button>
 				<button type="reset">초기화</button>

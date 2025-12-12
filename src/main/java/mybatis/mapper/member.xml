@@ -29,4 +29,11 @@
 		  from ssh_member
 		 where id = #{id} and password = #{password}
 	</select>
+	
+	<!-- 회원 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete 
+		  from ssh_member
+		 where no = #{no}
+	</delete>
 </mapper>

@@ -54,7 +54,7 @@
 			<div class="tab-menu">
 				<button onclick="openTab('detail')">회원 정보</button>
 				<button onclick="openTab('build')">내 빌드</button>
-				<button onclick="openTab('edit')">정보 수정</button>
+<!-- 				<button onclick="openTab('edit')">정보 수정</button> -->
 				<button onclick="openTab('delete')">회원 탈퇴</button>
 			</div>
 			<div class="tabContent" id="detail" style="display:block;">
@@ -63,9 +63,9 @@
 			<div class="tabContent" id="build" style="display:none;">
 				<jsp:include page="/member/mypageTabs/myBuild.jsp" />
 			</div>
-			<div class="tabContent" id="edit" style="display:none;">
+<%-- 			<div class="tabContent" id="edit" style="display:none;">
 				<jsp:include page="/member/mypageTabs/editMember.jsp" />
-			</div>
+			</div> --%>			
 			<div class="tabContent" id="delete" style="display:none;">
 				<jsp:include page="/member/mypageTabs/memberDelete.jsp" />
 			</div>

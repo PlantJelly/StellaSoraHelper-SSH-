@@ -82,7 +82,7 @@ select *
   
 update ssh_member
    set type = 'ADMIN'
- where no = 3;
+ where no = 24;
 
 select *
   from ssh_build;
@@ -95,6 +95,10 @@ select *
 update ssh_build
    set view_cnt = view_cnt + 1
    where no = 2;
+ 
+update ssh_build
+   set recommend_cnt = 18
+   where no = 3;
  
 insert into ssh_build(no, title, nickname, password, content)
 values(seq_ssh_build_no.nextval, 'test2', 'test2', 'test2', 'test2');
@@ -132,7 +136,13 @@ UPDATE ssh_potential
 
 COMMIT;
   
-  
+truncate table ssh_build;
+
+truncate table ssh_reply;
+
+alter sequence seq_ssh_build_no restart start with 1;
+
+alter sequence seq_ssh_reply_no restart start with 1;
   
   
   
