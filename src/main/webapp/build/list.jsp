@@ -63,7 +63,7 @@
 			</c:forEach>
 		</table>
 		<div class="button-container-right">
-			<button id="addBtn">새글등록</button>
+			<button id="addBtn">새빌드</button>
 		</div>
 		<div class="search-container-center">
 			<form action="list.do" method="get">

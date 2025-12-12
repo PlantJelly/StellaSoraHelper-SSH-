@@ -12,15 +12,13 @@ public class AdminMenuController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO) session.getAttribute("userVO");
-		if(user == null) {
+		if(user.getType().equals("ADMIN")) {
+			return "/admin/menu.jsp";
+		}else {
 			request.setAttribute("msg", "잘못된 접근입니다.");
 			request.setAttribute("url", request.getContextPath() + "/index.jsp");
 			return "/common/msg.jsp";			
 		}
-		if(user.getType().equals("ADMIN")) {
-			return "/admin/menu.jsp";
-		}
-		return "/index.jsp";
 	}
 
 }
