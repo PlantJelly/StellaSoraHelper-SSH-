@@ -18,9 +18,12 @@
         let listBtn = document.querySelector("#listBtn");
         listBtn.addEventListener('click', () => {
             let pageInt = Number("${page}");
-            if (isNaN(pageInt)) {
-                location.href = "${ pageContext.request.contextPath }/build/list.do"; // page가 없으면 그냥 목록으로
-            } else {
+            if ("${page}" == "build") {
+            	location.href = "${ pageContext.request.contextPath }/member/mypage.do?tab=${ page }";
+            } else if(isNaN(pageInt)){
+                location.href = "${ pageContext.request.contextPath }/build/list.do";
+            }
+            else {
                 location.href = "${ pageContext.request.contextPath }/build/list.do?page=${ page }";
             }
         });

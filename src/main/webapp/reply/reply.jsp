@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <div class="reply-form-container">
 	<form action="${ pageContext.request.contextPath }/reply/write.do" method="post" name="writeForm">
 		<table border="1">

@@ -14,7 +14,7 @@ public class HandlerMapping {
 	public HandlerMapping() {
 		Properties prop = new Properties();
 		try {
-			InputStream is = new FileInputStream("C:\\Lecture\\codes(1_2)\\web-workspace_copy\\SSHelper\\bean.properties");
+			InputStream is = new FileInputStream("C:\\Users\\user\\Desktop\\Folder\\University\\codes(1_2)\\web-workspace_copy\\SSHelper\\bean.properties");
 			prop.load(is);
 
 			Set<Object> keys = prop.keySet();

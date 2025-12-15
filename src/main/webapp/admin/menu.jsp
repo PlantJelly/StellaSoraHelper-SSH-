@@ -13,8 +13,16 @@
 	<header>
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
-	<section>
-		
+	<section class="admin-menu-container">
+		<div class="admin-menu-item" onclick="location.href='#'">
+			회원 관리
+		</div>
+		<div class="admin-menu-item" onclick="location.href='#'">
+			캐릭터 등록 / 수정
+		</div>
+		<div class="admin-menu-item" onclick="location.href='#'">
+			잠재능력 등록 / 수정
+		</div>
 	</section>
 	<footer>
 		<%@ include file="/include/footer.jsp" %>

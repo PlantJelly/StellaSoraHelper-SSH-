@@ -62,7 +62,6 @@ h2 {
 }
 
 
-/* --- Tables --- */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -89,7 +88,6 @@ table.data-table tr:hover {
 
 form table {
     border: none;
-    /* The centering is now handled by the .form-centered class on the form tag */
 }
 form table th {
     background-color: transparent;
@@ -374,7 +372,7 @@ button[type="reset"]:hover, button[type="button"]:hover {
 .reply-form-container table {
 	width: auto;
 	margin-bottom: 1rem;
-	margin: 0; /* Keep reply table left-aligned */
+	margin: 0; 
 }
 
 .reply-textarea-wrapper {
@@ -385,14 +383,14 @@ button[type="reset"]:hover, button[type="button"]:hover {
 .reply-form-container textarea {
     width: 600px; 
     height: 120px; 
-    padding-bottom: 12px; /* Adjusted padding */
+    padding-bottom: 12px; 
 }
 
 .reply-form-buttons {
-    display: flex; /* Changed from absolute positioning */
+    display: flex; 
     gap: 5px;
-	margin-top: 10px; /* Added margin for spacing */
-	align-self: flex-end; /* Align to the right within the flex container */
+	margin-top: 10px; 
+	align-self: flex-end; 
 }
 
 .reply-form-buttons button {
@@ -400,7 +398,6 @@ button[type="reset"]:hover, button[type="button"]:hover {
     font-size: 0.9rem;
 }
 
-/* List page specific styles */
 .list-controls {
     display: flex;
     justify-content: flex-start;
@@ -419,7 +416,6 @@ button[type="reset"]:hover, button[type="button"]:hover {
     gap: 8px;
 }
 
-/* A generic class for styled select boxes */
 .form-select {
     padding: 8px 12px;
     border: 1px solid #ced4da;
@@ -434,7 +430,7 @@ button[type="reset"]:hover, button[type="button"]:hover {
     background-position: right 0.75rem center;
     background-size: 16px 12px;
     transition: border-color 0.2s, box-shadow 0.2s;
-    height: 38px; /* Match input height */
+    height: 38px; 
 }
 
 .form-select:focus {
@@ -446,24 +442,22 @@ button[type="reset"]:hover, button[type="button"]:hover {
 .search-button {
     padding: 8px 20px;
     height: 38px;
-    background-color: #6c757d; /* Gray color */
+    background-color: #6c757d; 
     color: white;
-    border-color: #6c757d; /* Restored border color */
+    border-color: #6c757d; 
 }
 .search-button:hover {
     background-color: #5a6268;
     border-color: #5a6268;
 }
 
-/* Sizing for orderType select */
 .order-select {
-    width: 120px; /* Reduced width */
+    width: 120px; 
     font-size: 1.0rem;
     padding: 8px 12px;
-    height: 42px; /* A bit larger */
+    height: 42px; 
 }
 
-/* Sizing for search elements */
 .search-select {
-    width: 100px; /* Reduced width */
+    width: 100px; 
 }
